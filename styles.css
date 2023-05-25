@@ -24,10 +24,12 @@ h3 {
   font-size: 30px;
   margin: auto;
   margin-top: 14px;
-  padding: 14px;
+  padding: 20px;
+  width: 350px;
   font-family: 'Abril Fatface', cursive;
   font-weight: 700;
   letter-spacing: 2px;
+  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
 }
 
 button:hover{
@@ -61,14 +63,17 @@ button:hover{
 
 .options {
   justify-content: space-between;
-  padding: 0 14px;
-  margin-top: 10px;
+  padding-top: 20px;
 }
 
 #random {
   border: none;
   height: 32px;
   padding: 8px;
+}
+
+.myTabs {
+  padding-top: 0;
 }
 
 ol#tabs {

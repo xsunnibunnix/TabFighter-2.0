@@ -16,17 +16,28 @@ window.addEventListener("DOMContentLoaded", function () {
         tabEl.classList.add('active');
       }
       tabEl.addEventListener('click', function () {
-        chrome.tabs.update(tab.id, { active: true });
-        window.close();
+        const yoshi = document.createElement('audio');
+        yoshi.setAttribute('src', 'assets/yoshi.wav');
+        const boundDelete = yoshi.remove.bind(yoshi);
+        this.appendChild(yoshi);
+        yoshi.play();
+        // chrome.tabs.update(tab.id, { active: true });
+        setTimeout(chrome.tabs.update, 800, tab.id, { active: true })
+        setTimeout(boundDelete, 2000, yoshi)
+        // tabEl.removeChild(grow);
+        // setTimeout(deleteGrow, 2000, grow)
+        // window.close();
       });
       deleteButton.addEventListener('click', function (e) {
         this.parentElement.classList.add('delete');
         const boundDelete = this.parentElement.remove.bind(this.parentElement)
         chrome.tabs.remove(tab.id);
-        const delSound = document.createElement('audio');
-        delSound.setAttribute('src', 'assets/Hadouken.mp3')
-        setTimeout(boundDelete, 500)
-        // this.parentElement.remove()
+        const hadouken = document.createElement('audio');
+        hadouken.setAttribute('src', 'assets/Hadouken.mp3');
+        // const play = hadouken.play.bind(hadouken);
+        this.appendChild(hadouken);
+        hadouken.play();
+        setTimeout(boundDelete, 2000);
       })
       div.appendChild(deleteButton);
       div.appendChild(tabEl)
@@ -36,14 +47,23 @@ window.addEventListener("DOMContentLoaded", function () {
 
   const random = document.querySelector('#random');
   random.addEventListener('click', () => {
+    const tabs = document.querySelector('#tabs');
     const randNum = Math.floor(Math.random() * allTabs.length);
     const randTab = allTabs[randNum].id
     const tabToDelete = document.getElementById(randTab);
     chrome.tabs.remove(allTabs[randNum].id);
     tabToDelete.classList.add('delete');
-    allTabs.splice(randNum, 1);
     const parentDelete = tabToDelete.parentElement.remove.bind(tabToDelete.parentElement);
-    setTimeout(parentDelete, 500);
+
+    // play sound
+    const fatality = document.createElement('audio');
+    fatality.setAttribute('src', 'assets/FinishHim.mp3');
+    const boundDelete = tabs.removeChild.bind(fatality);
+    tabs.appendChild(fatality);
+    fatality.play();
+    this.setTimeout(parentDelete, 500);
+    setTimeout(boundDelete, 2000);
+    allTabs.splice(randNum, 1);
   })
 
   const smFont = document.querySelector('#sm-font');
@@ -51,17 +71,31 @@ window.addEventListener("DOMContentLoaded", function () {
   smFont.addEventListener('click', () => {
     const tabs = document.querySelector('#tabs');
     if (!smFont.classList.contains('active')) {
+      // play sound
+      const shrink = document.createElement('audio');
+      shrink.setAttribute('src', 'assets/shrink.mp3');
+      tabs.appendChild(shrink);
+      shrink.play();
+      const deleteShrink = tabs.removeChild.bind(shrink) 
       smFont.classList.add('active');
       lgFont.classList.remove('active');
       tabs.style.fontSize = '14px';
+      setTimeout(deleteShrink, 2000, shrink)
     } else return;
   })
   lgFont.addEventListener('click', () => {
     const tabs = document.querySelector('#tabs');
     if (!lgFont.classList.contains('active')) {
+      // play sound
+      const grow = document.createElement('audio');
+      grow.setAttribute('src', 'assets/grow.mp3');
+      tabs.appendChild(grow);
+      grow.play();
+      const deleteGrow = tabs.removeChild.bind(tabs) 
       lgFont.classList.add('active');
       smFont.classList.remove('active');
       tabs.style.fontSize = '20px';
+      setTimeout(deleteGrow, 2000, grow)
     } else return;
   })
 
