@@ -1,8 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Not focus",
+  "name": "LiveTabs",
   "version": "1.0",
-  "description": " does not replace distracting content with inspiration",
+  "description": "Access and manage open Chrome tabs with intuitive user interface",
+  "icons": {
+    "16": "icon/live.png"
+  },
   "background": {
     "service_worker": "background.js"
   },
