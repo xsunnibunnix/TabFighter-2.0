@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Not focus",
+  "version": "1.0",
+  "description": " does not replace distracting content with inspiration",
+  "permissions": ["tabs", "action", "audio", "scripting", "activeTab"],
+  "content_scripts": [
+      {
+          "matches": ["*://*/*"],
+          "js": ["./main.js"]
+      }
+  ],
+  "host_permissions": ["https://developer.chrome.com/*"]
+}
