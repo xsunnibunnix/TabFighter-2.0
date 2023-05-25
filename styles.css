@@ -4,11 +4,16 @@
   box-sizing: border-box;
 }
 
+html {
+  margin-bottom: 14px;
+}
+
 body {
+  font-family: 'Poppins', sans-serif;
   max-width: 400px;
   width: 400px;
   max-height: 400px;
-  height: 400px;
+  margin-bottom: 14px;
 }
 
 h3 {
@@ -16,9 +21,53 @@ h3 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 26px;
+  font-size: 30px;
   margin: auto;
   margin-top: 14px;
+  padding: 14px;
+  font-family: 'Abril Fatface', cursive;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.font-btn {
+  height: 32px;
+  width: 32px;
+  border: none;
+}
+
+#sm-font {
+  font-size: 14px;
+}
+
+#lg-font {
+  font-size: 20px;
+}
+
+.myTabs, .options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 350px;
+  max-width: 350px;
+  box-sizing: border-box;
+  padding: 14px;
+}
+
+.options {
+  justify-content: space-between;
+  padding: 0 14px;
+  margin-top: 10px;
+}
+
+#random {
+  border: none;
+  height: 32px;
   padding: 8px;
 }
 
@@ -35,21 +84,11 @@ li {
   align-items: center;
   list-style: none;
   width: 100%;
-  font-size: 14px;
+  /* font-size: 14px; */
   cursor: pointer;
   padding: 4px;
   padding-left: 10px;
-}
-
-.myTabs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  width: 350px;
-  max-width: 350px;
-  box-sizing: border-box;
-  padding: 14px;
+  border-radius: 7px;
 }
 
 .tab {
@@ -84,13 +123,9 @@ i {
   height: 40px;
 }
 
-.delete {
-  transition: visibility 0s 1s, opacity 2s linear;
-}
-
 .tab li:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(90, 181, 250, 0.2);
 }
 
 .tab:hover span {
@@ -101,10 +136,64 @@ i {
 .active {
   background-color: rgba(195, 0, 255, 0.2);
   border: .5px solid rgba(195, 0, 255, 0.2);
-  box-shadow: 0px 0px 5px 3px rgba(195, 0, 255, 0.5);
+  box-shadow: 0px 0px 5px 3px rgba(195, 0, 255, 0.2);
+  border-radius: 7px;
 }
 
 #tabs {
   width: 400px;
   height: 400px;
 }
+
+.delete {
+  animation: fadeOut ease .5s;
+  -webkit-animation: fadeOut ease .5s;
+  -moz-animation: fadeOut ease .5s;
+  -o-animation: fadeOut ease .5s;
+  -ms-animation: fadeOut ease .5s;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
