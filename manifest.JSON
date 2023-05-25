@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "LiveTabs",
+  "name": "TabFighter",
   "version": "1.0",
   "description": "Access and manage open Chrome tabs with intuitive user interface",
   "icons": {
-    "16": "icon/live.png"
+    "16": "icon/tabfighter.png"
   },
   "background": {
     "service_worker": "background.js"
