@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin-bottom: 14px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  max-width: 400px;
+  width: 400px;
+  max-height: 400px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  margin-top: 14px;
+  padding: 20px;
+  width: 350px;
+  font-family: 'Abril Fatface', cursive;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.font-btn {
+  height: 32px;
+  width: 32px;
+  border: none;
+}
+
+#sm-font {
+  font-size: 14px;
+}
+
+#lg-font {
+  font-size: 20px;
+}
+
+.myTabs, .options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 350px;
+  max-width: 350px;
+  box-sizing: border-box;
+  padding: 14px;
+}
+
+.options {
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+#random {
+  border: none;
+  height: 32px;
+  padding: 8px;
+}
+
+.myTabs {
+  padding-top: 0;
+}
+
+ol#tabs {
+  max-width: 300px;
+  box-sizing: border-box;
+  margin: 4px;
+  padding: 4px;
+}
+
+
+li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  /* font-size: 14px; */
+  cursor: pointer;
+  padding: 4px;
+  padding-left: 10px;
+  border-radius: 7px;
+}
+
+.tab {
+  display: flex;
+  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
+}
+
+.tab:last-child {
+  border: none;
+}
+
+span {
+  background: #e74e3c;
+  height: 40px;
+  text-align: center;
+  color: white;
+  width: 0;
+  display: inline-block;
+  transition: 0.2s linear;
+  opacity: 0;
+  margin: auto;
+}
+
+span:hover {
+  cursor: pointer;
+}
+
+i {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.tab li:hover {
+  cursor: pointer;
+  background-color: rgba(90, 181, 250, 0.2);
+}
+
+.tab:hover span {
+  width: 40px;
+  opacity: 1;
+}
+
+.active {
+  background-color: rgba(195, 0, 255, 0.2);
+  border: .5px solid rgba(195, 0, 255, 0.2);
+  box-shadow: 0px 0px 5px 3px rgba(195, 0, 255, 0.2);
+  border-radius: 7px;
+}
+
+#tabs {
+  width: 400px;
+  height: 400px;
+}
+
+.delete {
+  animation: fadeOut ease .5s;
+  -webkit-animation: fadeOut ease .5s;
+  -moz-animation: fadeOut ease .5s;
+  -o-animation: fadeOut ease .5s;
+  -ms-animation: fadeOut ease .5s;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+

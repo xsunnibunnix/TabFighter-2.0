@@ -6,10 +6,3 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse){
     return true;
   }
 })
-
-// function logListener(info) {
-//   let tabInfo = browser.tabs.get(info.tabId);
-//   sendResponse(tabInfo);
-// }
-
-// chrome.runtime.onMessage.addListener(logListener);
