@@ -11,13 +11,12 @@
       {
           "matches": ["<all_urls>"],
           "js": ["main.js", "popup.js"],
-          "run_at": "document_start"
+          "run_at": "document_end"
       }
   ],
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "css": ["styles.css"]
   }, 
   "host_permissions": ["https://developer.chrome.com/*"]
 }
-
-// "action", "audio",

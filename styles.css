@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 400px;
+  width: 400px;
+  max-height: 400px;
+  height: 400px;
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 26px;
+  margin: auto;
+  margin-top: 14px;
+  padding: 8px;
+}
+
+ol#tabs {
+  max-width: 300px;
+  box-sizing: border-box;
+  margin: 4px;
+  padding: 4px;
+}
+
+
+li {
+  padding: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.myTabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 350px;
+  max-width: 350px;
+  box-sizing: border-box;
+  padding: 14px;
+}
+
+#tabs li:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.active {
+  border: 2px solid black;
+  background-color: rgba(0, 0, 255, .2);
+}
+
+#tabs {
+  width: 400px;
+  height: 400px;
+}
