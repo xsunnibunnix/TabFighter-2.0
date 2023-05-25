@@ -3,12 +3,21 @@
   "name": "Not focus",
   "version": "1.0",
   "description": " does not replace distracting content with inspiration",
-  "permissions": ["tabs", "action", "audio", "scripting", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["tabs", "scripting", "activeTab"],
   "content_scripts": [
       {
-          "matches": ["*://*/*"],
-          "js": ["./main.js"]
+          "matches": ["<all_urls>"],
+          "js": ["main.js", "popup.js"],
+          "run_at": "document_start"
       }
   ],
+  "action": {
+    "default_popup": "index.html"
+  }, 
   "host_permissions": ["https://developer.chrome.com/*"]
 }
+
+// "action", "audio",
