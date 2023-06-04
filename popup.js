@@ -31,12 +31,13 @@ window.addEventListener("DOMContentLoaded", function () {
       deleteButton.addEventListener('click', function (e) {
         this.parentElement.classList.add('delete');
         const boundDelete = this.parentElement.remove.bind(this.parentElement)
-        chrome.tabs.remove(tab.id);
+        // chrome.tabs.remove(tab.id);
         const hadouken = document.createElement('audio');
         hadouken.setAttribute('src', 'assets/Hadouken.mp3');
         // const play = hadouken.play.bind(hadouken);
         this.appendChild(hadouken);
         hadouken.play();
+        setTimeout(chrome.tabs.remove, 2000, tab.id);
         setTimeout(boundDelete, 2000);
       })
       div.appendChild(deleteButton);
