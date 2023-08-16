@@ -21,6 +21,8 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
   const [yoshi, setYoshi] = useState(false);
   const [hadouken, setHadouken] = useState(false);
 
+  const setAllTabs = useContext(TabContext)?.setAllTabs;
+
   const goToTab = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const target = e.target as HTMLLIElement;
     const windowId: number = Number(target.attributes[1].value);
@@ -32,11 +34,17 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
   };
 
   const closeTab = (e: React.MouseEvent) => {
-    console.dir(e.target);
     setHadouken(true);
-    setTimeout(chrome.tabs.remove, 2000, tabId);
-    setTimeout(() => setHadouken(false), 2000);
 
+    let timeToRemove:number;
+    if (active) timeToRemove = 1500;
+    else timeToRemove = 500;
+
+    setTimeout(chrome.tabs.remove, timeToRemove, tabId);
+    setTimeout(() => getTabs().then(tabs => {
+      if (setAllTabs) setAllTabs(tabs)
+    }), timeToRemove + 100);
+    setTimeout(() => setHadouken(false), 1500);
   };
 
   return (
@@ -53,4 +61,4 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
   )
 }
 
-export default Tabs;
+  export default Tabs;
