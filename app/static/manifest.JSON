@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "TabFighter",
+  "version": "2.0",
+  "description": "Access and manage open Chrome tabs with intuitive user interface",
+  "icons": {
+    "16": "tabfighter.png",
+    "32": "tabFighter.png",
+    "48": "tabfighter.png",
+    "128": "tabfighter.png"
+  },
+  "permissions": ["tabs", "activeTab"],
+  "action": {
+    "default_title": "TabFighter 2.0",
+    "default_popup": "index.html"
+  }, 
+  "host_permissions": ["https://developer.chrome.com/*"]
+}
