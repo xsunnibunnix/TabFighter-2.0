@@ -1,11 +1,15 @@
-# GreatestHack
+# TabFighter 2.0
 
-Goals
-- marco polo with the tabs
-    [] Get some sound to play on a random tab
-    [] Sound should be done on the oldest tab
-    [] replay sound after some time passes
-    [] have a different returned sound after finding said tab
-    [] selected tab will have some picture with last opened info
-        - event listener on click to return to normal page
-    
+## Getting started
+To add TabFighter 2.0 to your Chrome Extensions:
+
+1. Clone this repo to your local machine.
+2. Bundle with Webpack by running `npm run build` in your terminal.
+3. Go to `chrome://extensions` and turn on _Developer Mode_.
+4. Click _Load Unpacked_ and navigate to the directory you saved locally. __ONLY__ upload the `dist` folder.
+5. Pin `TabFighter 2.0` to your extension bar and get fighting!
+
+__Be sure to turn your sound on and enjoy!__
+<br><br>
+
+![Ryu from StreetFighter](./app/static/tabfighter.png)
