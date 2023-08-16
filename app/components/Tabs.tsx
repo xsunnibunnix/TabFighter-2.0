@@ -1,15 +1,24 @@
-import React from "react";
+import React from 'react';
+import { DeleteButton } from './DeleteButton';
 
-const Tabs = () => {
-  const getTabs = async () => {
-    const tabs = await chrome.tabs.query({});
-    console.log(tabs);
-  }
-  getTabs();
+interface TabsProps {
+  tabId: number | undefined,
+  active: boolean,
+  title: string | undefined,
+  windowId: string
+}
 
+export interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
+  windowId: string
+}
+
+const Tabs = ({tabId, active, title, ...DivProps}:TabsProps) => {
   return (
-    <div>Tabs</div>
+    <div className='tab' id={String(tabId)} {...DivProps}>
+      <DeleteButton/>
+      <li className={active ? 'active' : ''}>{title}</li>
+    </div>
   )
 }
 
-export default Tabs
+export default Tabs;

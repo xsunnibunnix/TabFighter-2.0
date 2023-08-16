@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './components/Header';
-import Tabs from './components/Tabs';
+import TabsContainer from './components/TabsContainer';
 
 const App = () => {
   console.log('reactPopup');
   return (
     <>
       <Header />
-      <Tabs />
+      <TabsContainer />
     </>
   )
 }

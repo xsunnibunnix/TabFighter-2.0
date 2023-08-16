@@ -16,6 +16,12 @@ body {
   margin-bottom: 14px;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
+
+/* Header */
 h3 {
   display: flex;
   align-items: center;
@@ -34,10 +40,6 @@ h3 {
   line-height: 2.5rem;
 }
 
-button:hover{
-  cursor: pointer;
-}
-
 .font-btn {
   height: 32px;
   width: 32px;
@@ -52,20 +54,15 @@ button:hover{
   font-size: 20px;
 }
 
-.myTabs, .options {
+.options {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: auto;
+  justify-content: space-between;
+  margin: 14px auto;
   width: 350px;
   max-width: 350px;
   box-sizing: border-box;
-  padding: 14px;
-}
-
-.options {
-  justify-content: space-between;
-  padding-top: 20px;
+  padding: 4px 14px;
 }
 
 #random {
@@ -74,24 +71,32 @@ button:hover{
   padding: 8px;
 }
 
+
+/* Tabs List */
 .myTabs {
-  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 350px;
+  max-width: 350px;
+  box-sizing: border-box;
+  padding: 8px 0px;
 }
 
-ol#tabs {
+ul#tabs {
   max-width: 300px;
   box-sizing: border-box;
   margin: 4px;
   padding: 4px;
 }
 
-
 li {
   display: flex;
   align-items: center;
   list-style: none;
   width: 100%;
-  /* font-size: 14px; */
   cursor: pointer;
   padding: 4px;
   padding-left: 10px;
@@ -146,11 +151,6 @@ i {
   border-radius: 10px;
 }
 
-#tabs {
-  width: 400px;
-  height: 400px;
-}
-
 .delete {
   animation: fadeOut ease .5s;
   -webkit-animation: fadeOut ease .5s;
@@ -158,6 +158,11 @@ i {
   -o-animation: fadeOut ease .5s;
   -ms-animation: fadeOut ease .5s;
 }
+
+.window {
+  display: flex;
+}
+
 @keyframes fadeOut {
   0% {
     opacity:1;

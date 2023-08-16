@@ -19,7 +19,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'app/static', to: path.resolve('dist') },
-        {from: 'app/sounds', to: 'sounds'}
+        {from: 'app/soundFiles', to: 'soundFiles'}
       ]
     })
   ],
