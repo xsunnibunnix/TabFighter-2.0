@@ -6,5 +6,5 @@ export type Tab = {
 }
 
 export type AllTabs = {
-  [key: number]: Tab[]
+  [key: number | string]: Tab[]
 }
