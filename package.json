@@ -1,0 +1,42 @@
+{
+  "name": "tabfighter2.0",
+  "version": "2.0.0",
+  "description": "A retro-inspired tab manager",
+  "main": "dist/popup.js",
+  "scripts": {
+    "build": "webpack-cli ./app/popup.tsx --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xsunnibunnix/TabFighter.git"
+  },
+  "author": "Sunny Pacheco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xsunnibunnix/TabFighter/issues"
+  },
+  "homepage": "https://github.com/xsunnibunnix/TabFighter#readme",
+  "dependencies": {
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@types/chrome": "^0.0.243",
+    "babel-loader": "^9.1.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
