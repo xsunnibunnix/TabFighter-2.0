@@ -1,27 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import WindowContainer from "./WindowContainer";
-import getTabs from "../utils/getTabs";
-import { AllTabs } from "../../types";
 import { TabContext } from "../context/TabContext";
+import { FontContext } from "../context/FontContext";
 
 
 const TabsContainer = () => {
-  // const [allTabs, setAllTabs] = useState<AllTabs>({});
-  // useEffect(() => {
-  //   getTabs()
-  //     .then(tabs => setAllTabs({...tabs}))
-  // }, []);
-
   const allTabs = useContext(TabContext)?.allTabs;
+  const smallActive = useContext(FontContext)?.smallActive
 
   const windows = [];
-  
   for (const window in allTabs) {
     windows.push(<WindowContainer id={window} tabs={allTabs[window]} />)
   }
   
   return (
-    <div className="myTabs">
+    <div className={`myTabs ${smallActive ? 'sm-font': 'lg-font'}`}>
       {windows}
     </div>
   )

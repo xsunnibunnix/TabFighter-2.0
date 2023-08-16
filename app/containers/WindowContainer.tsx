@@ -1,5 +1,5 @@
 import React from 'react';
-import Tabs from './Tabs';
+import Tabs from '../components/Tabs';
 import { Tab } from '../../types';
 
 interface WindowProps {

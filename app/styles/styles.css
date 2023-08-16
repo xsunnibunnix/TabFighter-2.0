@@ -16,6 +16,13 @@ body {
   margin-bottom: 14px;
 }
 
+button {
+  font-family: 'Poppins', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 button:hover{
   cursor: pointer;
 }
@@ -43,14 +50,18 @@ h3 {
 .font-btn {
   height: 32px;
   width: 32px;
-  border: none;
+  border: 2px solid rgb(195, 0, 255);
+  border-radius: 8px;
+  background: transparent;
+  color: rgb(195, 0 , 255);
+  font-weight: 500;
 }
 
-#sm-font {
-  font-size: 14px;
+.sm-font {
+  font-size: 12px;
 }
 
-#lg-font {
+.lg-font {
   font-size: 20px;
 }
 
@@ -65,10 +76,28 @@ h3 {
   padding: 4px 14px;
 }
 
+#options-left, #options-right {
+  display: flex;
+  align-items: center;
+}
+
 #random {
-  border: none;
   height: 32px;
-  padding: 8px;
+  padding: 1rem;
+  border: 2px solid rgb(195, 0, 255);
+  border-radius: 8px;
+  background: transparent;
+  color: rgb(195, 0 , 255);
+}
+
+#random:hover, .font-btn:hover {
+  background: rgb(195, 0, 255);
+  color: white;
+}
+
+.sm {
+  font-size: 14px;
+  font-weight: 500;
 }
 
 
@@ -86,6 +115,7 @@ h3 {
 }
 
 ul#tabs {
+  width: 100%;
   max-width: 300px;
   box-sizing: border-box;
   margin: 4px;
@@ -105,6 +135,7 @@ li {
 .tab {
   display: flex;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
+  width: 100%;
 }
 
 .tab:last-child {
@@ -136,7 +167,8 @@ i {
 
 .tab li:hover {
   cursor: pointer;
-  background-color: rgba(90, 181, 250, 0.2);
+  background-color: rgba(115, 193, 253, 0.2);
+  border-radius: 8px;
 }
 
 .tab:hover span {
@@ -148,19 +180,25 @@ i {
   background-color: rgba(195, 0, 255, 0.2);
   border: .5px solid rgba(195, 0, 255, 0.2);
   box-shadow: 0px 0px 5px 3px rgba(195, 0, 255, 0.2);
-  border-radius: 10px;
+  border-radius: 8px;
+  color: black;
 }
 
 .delete {
-  animation: fadeOut ease .5s;
-  -webkit-animation: fadeOut ease .5s;
-  -moz-animation: fadeOut ease .5s;
-  -o-animation: fadeOut ease .5s;
-  -ms-animation: fadeOut ease .5s;
+  animation: fadeOut ease .4s;
+  -webkit-animation: fadeOut ease .4s;
+  -moz-animation: fadeOut ease .4s;
+  -o-animation: fadeOut ease .4s;
+  -ms-animation: fadeOut ease .4s;
+}
+
+.delete-btn {
+  border-radius: 3px;
 }
 
 .window {
   display: flex;
+  width: 100%;
 }
 
 @keyframes fadeOut {
