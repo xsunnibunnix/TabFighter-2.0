@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +18,7 @@ body {
   width: 400px;
   max-height: 400px;
   margin-bottom: 14px;
+  color: hsl(var(--n))
 }
 
 button {
@@ -43,17 +48,17 @@ h3 {
   font-weight: 700;
   letter-spacing: 2px;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
-  text-shadow: 1px 1px 5px rgba(195, 0, 255, 0.6);
+  text-shadow: 1px 1px 5px hsl(var(--pc));
   line-height: 2.5rem;
 }
 
 .font-btn {
   height: 32px;
   width: 32px;
-  border: 2px solid rgb(195, 0, 255);
+  border: 2px solid hsl(var(--p));
   border-radius: 8px;
   background: transparent;
-  color: rgb(195, 0 , 255);
+  color: hsl(var(--p));
   font-weight: 500;
 }
 
@@ -84,14 +89,14 @@ h3 {
 #random {
   height: 32px;
   padding: 1rem;
-  border: 2px solid rgb(195, 0, 255);
+  border: 2px solid hsl(var(--p));
   border-radius: 8px;
   background: transparent;
-  color: rgb(195, 0 , 255);
+  color: hsl(var(--p));
 }
 
 #random:hover, .font-btn:hover {
-  background: rgb(195, 0, 255);
+  background: hsl(var(--p));
   color: white;
 }
 
@@ -132,13 +137,13 @@ li {
   padding-left: 10px;
 }
 
-.tab {
+.tab-li {
   display: flex;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
   width: 100%;
 }
 
-.tab:last-child {
+.tab-li:last-child {
   border: none;
 }
 
@@ -165,23 +170,23 @@ i {
   height: 40px;
 }
 
-.tab li:hover {
+.tab-li li:hover {
   cursor: pointer;
-  background-color: rgba(115, 193, 253, 0.2);
+  background-color: hsl(var(--s));
   border-radius: 8px;
 }
 
-.tab:hover span {
+.tab-li:hover span {
   width: 40px;
   opacity: 1;
 }
 
 .active {
-  background-color: rgba(195, 0, 255, 0.2);
-  border: .5px solid rgba(195, 0, 255, 0.2);
-  box-shadow: 0px 0px 5px 3px rgba(195, 0, 255, 0.2);
+  background-color: hsl(var(--pf));
+  border: .5px solid hsl(var(--pf));
+  box-shadow: 0px 0px 5px 3px hsl(var(--pf));
   border-radius: 8px;
-  color: black;
+  color: hsl(var(--n));
 }
 
 .delete {

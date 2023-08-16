@@ -55,17 +55,11 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/i,
-        include: path.resolve(__dirname, 'app/styles'),
-        exclude: /node_modules/,
+        test: /\.css$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {importLoaders: 1},
-          },
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader',
         ],
       },
       {

@@ -48,7 +48,7 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
   };
 
   return (
-    <div className={`tab ${remove || tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
+    <div className={`tab-li ${remove || tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
       <DeleteButton closeTab={closeTab} tabId={String(tabId)} />
       {hadouken && <Hadouken play={hadouken} />}
       <li className={active ? 'active' : ''} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
