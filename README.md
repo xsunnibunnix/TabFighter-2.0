@@ -20,9 +20,13 @@ __Be sure to turn your sound on and enjoy!__
 - Light and Dark mode!
 
 ## Examples
+### Dark Mode
 ![Dark Mode](./assets/DarkModeMedium.png)
+### Light Mode
 ![Light Mode](./assets/LightModeMedium.png)
+### View By Window
 ![Dropdown](./assets/DropDownMedium.png)
+### Large Font
 ![Large Font](./assets/LargeFontMedium.png)
 
 ## Coming Soon
