@@ -11,6 +11,10 @@ To add TabFighter 2.0 to your Chrome Extensions:
 
 __Be sure to turn your sound on and enjoy!__
 
+<p align="center">
+  <img src="./app/static/tabfighter.png" />
+</p>
+
 ## Features
 - Click to go to or close any tab on any window.
 - View tabs on your current window at the top of the list.
@@ -35,7 +39,3 @@ __Be sure to turn your sound on and enjoy!__
 
 ## Coming Soon
 More themes!
-
-<br><br>
-
-![Ryu from StreetFighter](./app/static/tabfighter.png)
