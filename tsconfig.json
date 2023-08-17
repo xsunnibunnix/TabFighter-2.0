@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "jsx": "react",                                /* Specify what JSX code is generated. */
+    "jsx": "react",
     "module": "ESNext",
     "moduleResolution": "Node",
     "removeComments": true,
@@ -12,8 +12,7 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "typeRoots": ["./app/@types", "./node_modules/@types"]
   },
-  "include": ["app/**/*.tsx", "app/@types/custom.d.ts"],
+  "include": ["app/**/*.tsx", "custom.d.ts"],
   "exclude": ["node_modules"]
 }
