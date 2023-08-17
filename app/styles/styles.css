@@ -14,8 +14,8 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  max-width: 400px;
-  width: 400px;
+  max-width: 425px;
+  width: 425px;
   max-height: 400px;
   margin-bottom: 14px;
   color: hsl(var(--n))
@@ -75,8 +75,8 @@ h3 {
   align-items: center;
   justify-content: space-between;
   margin: 14px auto;
-  width: 350px;
-  max-width: 350px;
+  width: 375px;
+  max-width: 375px;
   box-sizing: border-box;
   padding: 4px 14px;
 }
@@ -113,15 +113,14 @@ h3 {
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 350px;
-  max-width: 350px;
+  width: 375px;
+  max-width: 375px;
   box-sizing: border-box;
   padding: 8px 0px;
 }
 
 ul#tabs {
-  width: 100%;
-  max-width: 300px;
+  width: 95%;
   box-sizing: border-box;
   margin: 4px;
   padding: 4px;
@@ -203,7 +202,13 @@ i {
 
 .window {
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
+}
+
+.window:last-child {
+  border: none;
 }
 
 @keyframes fadeOut {

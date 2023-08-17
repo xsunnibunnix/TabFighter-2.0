@@ -4,15 +4,16 @@ import { Tab } from '../../types';
 
 interface WindowProps {
   id: string,
-  tabs: Tab[]
+  tabs: Tab[],
+  windowName: string
 }
 
-const WindowContainer = ({id, tabs}: WindowProps) => {
+const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
   
   return (
-    <div className='window' id={id}>
-      <p>{id}</p>
-      <ul id="tabs">
+    <div className='window my-1' id={id}>
+      <p className='text-center py-3 w-1/4'>{windowName}</p>
+      <ul className='w-3/4' id="tabs">
         {tabs.map(tab => {
           const { active, tabId, title } = tab;
           return <Tabs tabId={tabId} active={active} title={title} windowId={id} />

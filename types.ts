@@ -8,3 +8,7 @@ export type Tab = {
 export type AllTabs = {
   [key: number | string]: Tab[]
 }
+
+export type WindowNames = {
+  [key: string]: string
+}
