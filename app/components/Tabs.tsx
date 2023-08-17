@@ -48,10 +48,10 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
   };
 
   return (
-    <div className={`tab-li ${remove || tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
+    <div className={`tab-li flex w-full ${remove || tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
       <DeleteButton closeTab={closeTab} tabId={String(tabId)} />
       {hadouken && <Hadouken play={hadouken} />}
-      <li className={active ? 'active' : ''} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
+      <li className={`flex items-center list-none w-full cursor-pointer p-1 pl-2.5 ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
       {yoshi && <Yoshi play={yoshi} />}
     </div>
   )

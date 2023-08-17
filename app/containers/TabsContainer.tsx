@@ -44,7 +44,6 @@ const TabsContainer = () => {
         windows.push(<WindowContainer id={window} tabs={allTabs[window]} windowName={windowNames[window]} />)
       }
     }
-
   }
 
   const handleChange = (e: ChangeEvent) => {
@@ -54,7 +53,7 @@ const TabsContainer = () => {
   }
 
   return (
-    <div className={`myTabs ${smallActive ? 'sm-font' : 'lg-font'}`}>
+    <div className={`myTabs flex flex-col items-center justify-center m-auto py-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
       <select className="select select-bordered w-full max-w-xs mb-2" onChange={e => handleChange(e)} >
         <option selected>All Windows</option>
         {windowList}
