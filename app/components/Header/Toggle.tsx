@@ -10,12 +10,13 @@ const Toggle = () => {
   const setDarkMode = useContext(ThemeContext)?.setDarkMode;
   const setTheme = useContext(ThemeContext)?.setTheme;
 
+  if (setTheme) {
+    if (darkMode) setTheme('dark');
+    else setTheme('light')
+  }
+
   const handleToggle = (e:any) => {
     if (setDarkMode) setDarkMode(prev => !prev);
-    if (setTheme) {
-      if (darkMode) setTheme('dark');
-      else setTheme('light')
-    }
   }
 
   return (

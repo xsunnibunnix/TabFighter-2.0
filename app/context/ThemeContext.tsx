@@ -8,23 +8,30 @@ interface ThemeContextProps {
 }
 
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-let localTheme = localStorage.getItem("theme");
 
 export const ThemeContext = createContext<ThemeContextProps | null>(null);
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+  let localTheme = localStorage.getItem("theme");
   const [darkMode, setDarkMode] = useState(mediaQuery.matches);
-  console.log(darkMode)
-  const [theme, setTheme] = useState(localTheme ? localTheme : `${mediaQuery.matches ? 'dark' : 'light'}`);
+  const [theme, setTheme] = useState(localTheme !== null ? localTheme : `${mediaQuery.matches ? 'dark' : 'light'}`);
+
+  useEffect(() => {
+    if (localTheme !== null && darkMode && localTheme === 'light') {
+      setDarkMode(() => false)
+    }
+  }, [])
+  
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    localTheme = localStorage.getItem("theme");
+    setTheme(localTheme!);
+    document.querySelector('html')?.setAttribute('data-theme', localTheme!);
+  }, [theme]);
+  
   mediaQuery.addEventListener('change', (e) => {
     setDarkMode(e.matches);
   })
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme!);
-    let localTheme = localStorage.getItem("theme");
-    document.querySelector('html')?.setAttribute('data-theme', localTheme!);
-}, [theme]);
   
   return <ThemeContext.Provider value={{ darkMode, setDarkMode, theme, setTheme }}>{children}</ThemeContext.Provider>
 };
