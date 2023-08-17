@@ -1,48 +1,34 @@
 import React, { useState, useContext } from 'react';
-import { Fatality } from '../Sounds/Fatality';
-import { TabContext } from '../../context/TabContext';
-import { RemoveContext } from '../../context/RemoveContext';
-import { Tab } from '../../../types';
-import getTabs from '../../utils/getTabs';
+import { Grow } from '../Sounds/Grow';
+import { Shrink } from '../Sounds/Shrink';
+import { FontContext } from '../../context/FontContext';
 
 const HeaderRight = () => {
-  const [fatality, setFatality] = useState(false);
-  const setTabToDelete = useContext(RemoveContext)?.setTabToDelete;
-  const allTabs = useContext(TabContext)?.allTabs;
-  const setAllTabs = useContext(TabContext)?.setAllTabs;
-  
-  const randomClick = async () => {
-    if (allTabs) {
-      const tabsList = Object.values(allTabs).reduce((acc, curr): Tab[] => {
-        acc.push(...curr);
-        return acc;
-      }, []);
-      const randNum = Math.floor(Math.random() * tabsList.length);
-      const randTab = tabsList[randNum].tabId;
+  const [shrink, setShrink] = useState(false);
+  const [grow, setGrow] = useState(false);
 
+  const smallActive = useContext(FontContext)?.smallActive;
+  const setSmallActive = useContext(FontContext)?.setSmallActive;
 
-      setFatality(prev => !prev);
-      if (randTab) {
-        if (setTabToDelete) setTabToDelete(randTab);
-        const tabToDelete = await chrome.tabs.get(randTab);
-        const { active, windowId } = tabToDelete;
-        let timeToRemove: number;
-        if (active) timeToRemove = 1500;
-        else timeToRemove = 500;
-    
-        setTimeout(chrome.tabs.remove, timeToRemove, randTab);
-        setTimeout(() => getTabs().then(tabs => {
-          if (setAllTabs) setAllTabs(tabs);
-        }), timeToRemove + 100);
-        setTimeout(() => setFatality(prev => !prev), 1500);
-      }
-    };
-  };
-
+  const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const target = e.target as HTMLButtonElement;
+    if (target.id === 'sm-font' && smallActive || target.id === 'lg-font' && !smallActive) return;
+    else if (smallActive) {
+      setGrow(prev => !prev);
+      setTimeout(() => setGrow(prev => !prev), 2000)
+    } else {
+      setShrink(prev => !prev);
+      setTimeout(() => setShrink(prev => !prev), 2000)
+    }
+    if(setSmallActive) setSmallActive(prev => !prev);
+  }
   return (
-    <div id="options-right">
-      <button className='sm' id="random" onClick={randomClick}>Random Mode</button>
-      {fatality && <Fatality play={fatality}/>}
+    <div className='flex items-center'>
+      <button className={`font-btn font-medium h-8 w-8 text-sm ${smallActive ? 'active' : ''}`} onClick={e => handleClick(e)} >A</button>
+      {shrink && <Shrink play={shrink} />}
+
+      <button className={`font-btn font-medium h-8 w-8 lg-font ${smallActive ? '' : 'active'}`} onClick={e => handleClick(e)}>A</button>
+      {grow && <Grow play={grow} />}
     </div>
   )
 }

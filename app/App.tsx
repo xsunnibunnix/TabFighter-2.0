@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Header from './components/Header/Header';
 import TabsContainer from './containers/TabsContainer';
 import TabProvider from './context/TabContext';

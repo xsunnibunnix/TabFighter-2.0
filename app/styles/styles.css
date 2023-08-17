@@ -34,55 +34,22 @@ button:hover{
 
 /* Header */
 h3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 30px;
-  margin: auto;
-  padding: 14px;
   width: 350px;
   font-family: 'Press Start 2P', cursive;
-  font-weight: 700;
-  letter-spacing: 2px;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
-  text-shadow: 1px 1px 5px hsl(var(--pc));
-  line-height: 2.5rem;
+  text-shadow: 1px 1px 2px hsl(var(--p)), 0 0 .6em hsl(var(--pc));
 }
 
-
 .font-btn {
-  height: 32px;
-  width: 32px;
   border: 2px solid hsl(var(--p));
   border-radius: 8px;
   background: transparent;
   color: hsl(var(--p));
-  font-weight: 500;
-}
-
-.sm-font {
-  font-size: 12px;
-}
-
-.lg-font {
-  font-size: 20px;
 }
 
 .options {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 14px auto;
   width: 375px;
   max-width: 375px;
-  box-sizing: border-box;
-  padding: 4px 14px;
-}
-
-#options-left, #options-right {
-  display: flex;
-  align-items: center;
 }
 
 #random {
@@ -99,73 +66,34 @@ h3 {
   color: white;
 }
 
-.sm {
-  font-size: 14px;
-  font-weight: 500;
+.sm-font {
+  font-size: 12px;
 }
 
+.lg-font {
+  font-size: 20px;
+}
 
 /* Tabs List */
 .myTabs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
   width: 375px;
   max-width: 375px;
-  box-sizing: border-box;
-  padding: 8px 0px;
 }
 
-ul#tabs {
-  width: 95%;
-  box-sizing: border-box;
-  margin: 4px;
-  padding: 4px;
+.window {
+  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
 }
 
-li {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-  cursor: pointer;
-  padding: 4px;
-  padding-left: 10px;
+.window:last-child {
+  border: none;
 }
 
 .tab-li {
-  display: flex;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
-  width: 100%;
 }
 
 .tab-li:last-child {
   border: none;
-}
-
-span {
-  background: #e74e3c;
-  height: 40px;
-  text-align: center;
-  color: white;
-  width: 0;
-  display: inline-block;
-  transition: 0.2s linear;
-  opacity: 0;
-  margin: auto;
-}
-
-span:hover {
-  cursor: pointer;
-}
-
-i {
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
 }
 
 .tab-li li:hover {
@@ -177,6 +105,23 @@ i {
 .tab-li:hover span {
   width: 40px;
   opacity: 1;
+}
+
+
+.delete-btn {
+  border-radius: 3px;
+}
+
+span {
+  background: #e74e3c;
+  color: white;
+  width: 0;
+  transition: 0.2s linear;
+  opacity: 0;
+}
+
+span:hover {
+  cursor: pointer;
 }
 
 .active {
@@ -193,21 +138,6 @@ i {
   -moz-animation: fadeOut ease .4s;
   -o-animation: fadeOut ease .4s;
   -ms-animation: fadeOut ease .4s;
-}
-
-.delete-btn {
-  border-radius: 3px;
-}
-
-.window {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
-}
-
-.window:last-child {
-  border: none;
 }
 
 @keyframes fadeOut {
