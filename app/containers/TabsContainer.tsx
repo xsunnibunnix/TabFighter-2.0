@@ -55,7 +55,7 @@ const TabsContainer = () => {
 
   return (
     <div className={`myTabs ${smallActive ? 'sm-font' : 'lg-font'}`}>
-      <select className="select select-bordered w-full max-w-xs my-2" onChange={e => handleChange(e)} >
+      <select className="select select-bordered w-full max-w-xs mb-2" onChange={e => handleChange(e)} >
         <option selected>All Windows</option>
         {windowList}
       </select>

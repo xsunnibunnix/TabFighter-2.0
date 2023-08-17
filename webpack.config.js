@@ -19,7 +19,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'app/static', to: path.resolve('dist') },
-        {from: 'app/soundFiles', to: 'soundFiles'}
+        { from: 'app/soundFiles', to: 'soundFiles' },
       ]
     })
   ],
@@ -64,7 +64,7 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|ico)$/i,
-        type: "asset",
+        type: "asset/resource",
       },
     ],
   },

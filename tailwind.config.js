@@ -14,6 +14,7 @@ module.exports = {
           'primary-content': "#db63ff",
           'secondary': "#d4ecfe",
           'neutral': "rgb(0,0,0)",
+          'base-100': "rgb(255,255,255)"
         },
       },
       {

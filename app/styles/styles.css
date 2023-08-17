@@ -32,7 +32,6 @@ button:hover{
   cursor: pointer;
 }
 
-
 /* Header */
 h3 {
   display: flex;
@@ -41,8 +40,7 @@ h3 {
   text-align: center;
   font-size: 30px;
   margin: auto;
-  margin-top: 14px;
-  padding: 20px;
+  padding: 14px;
   width: 350px;
   font-family: 'Press Start 2P', cursive;
   font-weight: 700;
@@ -51,6 +49,7 @@ h3 {
   text-shadow: 1px 1px 5px hsl(var(--pc));
   line-height: 2.5rem;
 }
+
 
 .font-btn {
   height: 32px;
