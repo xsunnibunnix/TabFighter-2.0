@@ -20,10 +20,10 @@ __Be sure to turn your sound on and enjoy!__
 - Light and Dark mode!
 
 ## Examples
-![Dark Mode](./assets/DarkMode.png)
-![Light Mode](./assets/LightMode.png)
-![Dropdown](./assets/DropDown.png)
-![Large Font](./assets/LargeFont.png)
+![Dark Mode](./assets/DarkModeMedium.png)
+![Light Mode](./assets/LightModeMedium.png)
+![Dropdown](./assets/DropDownMedium.png)
+![Large Font](./assets/LargeFontMedium.png)
 
 ## Coming Soon
 More themes!
