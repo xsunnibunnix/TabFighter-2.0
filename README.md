@@ -20,6 +20,8 @@ __Be sure to turn your sound on and enjoy!__
 - Light and Dark mode!
 
 ## Examples
+### Video
+![Video](./assets/ScreenRecord.mov)
 ### Dark Mode
 ![Dark Mode](./assets/DarkModeMedium.png)
 ### Light Mode
