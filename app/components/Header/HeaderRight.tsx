@@ -24,10 +24,10 @@ const HeaderRight = () => {
   }
   return (
     <div className='flex items-center'>
-      <button className={`font-btn font-medium h-8 w-8 text-sm ${smallActive ? 'active' : ''}`} onClick={e => handleClick(e)} >A</button>
+      <button className={`font-btn font-medium h-8 w-8 text-sm m-0.5 ${smallActive ? 'active' : ''}`} onClick={e => handleClick(e)} >A</button>
       {shrink && <Shrink play={shrink} />}
 
-      <button className={`font-btn font-medium h-8 w-8 lg-font ${smallActive ? '' : 'active'}`} onClick={e => handleClick(e)}>A</button>
+      <button className={`font-btn font-medium h-8 w-8 lg-font m-0.5 ${smallActive ? '' : 'active'}`} onClick={e => handleClick(e)}>A</button>
       {grow && <Grow play={grow} />}
     </div>
   )

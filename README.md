@@ -10,6 +10,24 @@ To add TabFighter 2.0 to your Chrome Extensions:
 5. Pin `TabFighter 2.0` to your extension bar and get fighting!
 
 __Be sure to turn your sound on and enjoy!__
+
+## Features
+- Click to go to or close any tab on any window.
+- View tabs on your current window at the top of the list.
+- Select a window from the dropdown to see only tabs on that window.
+- If you're feeling spicy, close a tab at random with Random Mode.
+- Accessibility feature: enlarge font size for better viewing.
+- Light and Dark mode!
+
+## Examples
+![Dark Mode](./assets/DarkMode.png)
+![Light Mode](./assets/LightMode.png)
+![Dropdown](./assets/DropDown.png)
+![Large Font](./assets/LargeFont.png)
+
+## Coming Soon
+More themes!
+
 <br><br>
 
 ![Ryu from StreetFighter](./app/static/tabfighter.png)
