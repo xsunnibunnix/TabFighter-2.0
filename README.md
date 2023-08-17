@@ -21,7 +21,9 @@ __Be sure to turn your sound on and enjoy!__
 
 ## Examples
 ### Video
-![Video](./assets/ScreenRecord.mov)
+<video src="https://github.com/xsunnibunnix/TabFighter/assets/78834754/fed11d39-77a1-4957-b919-4686726426fd" autoplay style="max-width: 730px;">
+</video>
+
 ### Dark Mode
 ![Dark Mode](./assets/DarkModeMedium.png)
 ### Light Mode
