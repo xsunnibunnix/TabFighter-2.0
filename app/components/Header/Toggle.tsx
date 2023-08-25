@@ -20,7 +20,7 @@ const Toggle = () => {
   }
 
   return (
-    <div className='flex justify-end items-center px-5 pt-5'>
+    <div className='flex items-center px-5 pt-5 pb-2'>
       <img className='flex justify-center items-center w-6 h-6 mx-1.5' src={darkMode ? darkMoon : lightMoon} />
         <input
           type='checkbox'

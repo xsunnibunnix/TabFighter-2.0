@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 interface FontContextProps {
   smallActive: boolean,
@@ -8,6 +8,13 @@ interface FontContextProps {
 export const FontContext = createContext<FontContextProps | null>(null);
 
 export default function FontProvider({ children }: { children: React.ReactNode }) {
-  const [smallActive, setSmallActive] = useState(true);
+  let localText = localStorage.getItem('text');
+  const [smallActive, setSmallActive] = useState(localText ? (localText === 'sm' ? true : false): true);
+
+  useEffect(() => {
+    localStorage.setItem('text', smallActive ? 'sm' : 'lg');
+    localText = localStorage.getItem('text');
+    setSmallActive(() => localText === 'sm' ? true : false)
+  }, [smallActive]);
   return <FontContext.Provider value={{ smallActive, setSmallActive }}>{children}</FontContext.Provider>
 }
