@@ -13,15 +13,9 @@ export const ThemeContext = createContext<ThemeContextProps | null>(null);
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   let localTheme = localStorage.getItem("theme");
-  const [darkMode, setDarkMode] = useState(mediaQuery.matches);
+  const [darkMode, setDarkMode] = useState(localTheme ? (localTheme === 'dark' ? true : false) : mediaQuery.matches);
   const [theme, setTheme] = useState(localTheme !== null ? localTheme : `${mediaQuery.matches ? 'dark' : 'light'}`);
 
-  useEffect(() => {
-    if (localTheme !== null && darkMode && localTheme === 'light') {
-      setDarkMode(() => false)
-    }
-  }, [])
-  
   useEffect(() => {
     localStorage.setItem('theme', theme);
     localTheme = localStorage.getItem("theme");

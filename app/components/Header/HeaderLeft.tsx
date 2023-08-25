@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Fatality } from '../Sounds/Fatality';
 import { TabContext } from '../../context/TabContext';
 import { RemoveContext } from '../../context/RemoveContext';
+import { SoundContext } from '../../context/SoundContext';
 import { Tab } from '../../../types';
 import getTabs from '../../utils/getTabs';
 
@@ -10,6 +11,7 @@ const HeaderLeft = () => {
   const setTabToDelete = useContext(RemoveContext)?.setTabToDelete;
   const allTabs = useContext(TabContext)?.allTabs;
   const setAllTabs = useContext(TabContext)?.setAllTabs;
+  const soundOn = useContext(SoundContext)?.soundOn;
   
   const randomClick = async () => {
     if (allTabs) {
@@ -21,7 +23,7 @@ const HeaderLeft = () => {
       const randTab = tabsList[randNum].tabId;
 
 
-      setFatality(prev => !prev);
+      if(soundOn) setFatality(prev => !prev);
       if (randTab) {
         if (setTabToDelete) setTabToDelete(randTab);
         const tabToDelete = await chrome.tabs.get(randTab);
@@ -34,7 +36,7 @@ const HeaderLeft = () => {
         setTimeout(() => getTabs().then(tabs => {
           if (setAllTabs) setAllTabs(tabs);
         }), timeToRemove + 100);
-        setTimeout(() => setFatality(prev => !prev), 1500);
+        if(soundOn) setTimeout(() => setFatality(prev => !prev), 1500);
       }
     };
   };
@@ -42,7 +44,7 @@ const HeaderLeft = () => {
   return (
     <div className='flex items-center'>
       <button className='font-medium text-sm' id="random" onClick={randomClick}>Random Mode</button>
-      {fatality && <Fatality play={fatality}/>}
+      {fatality && soundOn && <Fatality play={fatality}/>}
     </div>
   )
 }

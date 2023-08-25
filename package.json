@@ -1,7 +1,7 @@
 {
   "name": "tabfighter2.0",
-  "version": "2.0.0",
-  "description": "A retro-inspired tab manager",
+  "version": "2.1.0",
+  "description": "A retro-inspired Chrome tab manager",
   "main": "dist/popup.js",
   "scripts": {
     "build": "webpack-cli ./app/popup.tsx --config webpack.config.js",
