@@ -21,7 +21,8 @@ __Be sure to turn your sound on and enjoy!__
 - Select a window from the dropdown to see only tabs on that window.
 - If you're feeling spicy, close a tab at random with Random Mode.
 - Accessibility feature: enlarge font size for better viewing.
-- Light and Dark mode!
+- Light and Dark mode
+- Newly added: mute button
 
 ## Examples
 ### Video
