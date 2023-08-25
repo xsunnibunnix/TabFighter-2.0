@@ -38,5 +38,4 @@ __Be sure to turn your sound on and enjoy!__
 ![Large Font](./assets/LargeFontMedium.png)
 
 ## Coming Soon
-- Mute button
 - More themes!
