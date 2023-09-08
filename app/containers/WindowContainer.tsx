@@ -15,8 +15,8 @@ const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
       <p className='text-center py-3 w-1/4'>{windowName}</p>
       <ul className='w-3/4 box-border m-1 p-1'>
         {tabs.map(tab => {
-          const { active, tabId, title } = tab;
-          return <Tabs tabId={tabId} active={active} title={title} windowId={id} />
+          const { active, tabId, title, height, width } = tab;
+          return <Tabs tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} />
         })}
       </ul>
     </div>

@@ -8,7 +8,6 @@ import ThemeProvider from './context/ThemeContext';
 import SoundProvider from './context/SoundContext';
 
 const App = () => {
-  console.log('reactPopup');
   return (
     <>
       <ThemeProvider>

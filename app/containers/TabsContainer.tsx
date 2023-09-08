@@ -8,14 +8,13 @@ const TabsContainer = () => {
   const [currentWindow, setCurrentWindow] = useState<chrome.windows.Window | null>(null);
   const [selected, setSelected] = useState<number | null>(null)
   const allTabs = useContext(TabContext)?.allTabs;
-  const smallActive = useContext(FontContext)?.smallActive
+  const smallActive = useContext(FontContext)?.smallActive;
 
   useEffect(() => {
     chrome.windows.getCurrent().then(window => setCurrentWindow(window));
   }, [])
 
   const allWindows = allTabs ? Object.keys(allTabs) : [];
-
   const windowList: React.JSX.Element[] = [];
   const windowNames:WindowNames = {};
   let i = 0;

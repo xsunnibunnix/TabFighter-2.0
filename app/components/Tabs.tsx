@@ -11,17 +11,18 @@ interface TabsProps {
   tabId: number | undefined,
   active: boolean,
   title: string | undefined,
-  windowId: string
+  windowId: string,
+  height: number | undefined,
+  width: number | undefined
 }
 
 export interface LiProps extends React.LiHTMLAttributes<HTMLLIElement> {
   windowId: string
 }
 
-const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
+const Tabs = ({ tabId, active, title, height, width, ...LiProps }: TabsProps) => {
   const [yoshi, setYoshi] = useState(false);
   const [hadouken, setHadouken] = useState(false);
-  const [remove, setRemove] = useState(false);
   const setAllTabs = useContext(TabContext)?.setAllTabs;
   const tabToDelete = useContext(RemoveContext)?.tabToDelete;
   const soundOn = useContext(SoundContext)?.soundOn;
@@ -39,7 +40,7 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
       setTimeout(chrome.tabs.update, timeoutTime, tabId, { active: true });
     }
     setTimeout(() => window.close(), timeoutTime);
-    setTimeout(chrome.windows.update, timeoutTime, windowId, { focused: true, state: 'normal' });
+    setTimeout(chrome.windows.update, timeoutTime, windowId, { focused: true, state: 'normal', height, width });
   };
 
   const closeTab = () => {
@@ -54,7 +55,7 @@ const Tabs = ({ tabId, active, title, ...LiProps }: TabsProps) => {
   };
 
   return (
-    <div className={`tab-li flex w-full ${remove || tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
+    <div className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
       <DeleteButton closeTab={closeTab} tabId={String(tabId)} />
       {hadouken && soundOn && <Hadouken play={hadouken} />}
       <li className={`flex items-center list-none w-full cursor-pointer p-1 pl-2.5 ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
