@@ -1,6 +1,6 @@
 {
   "name": "tabfighter2.0",
-  "version": "2.1.0",
+  "version": "2.2.1",
   "description": "A retro-inspired Chrome tab manager",
   "main": "dist/popup.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xsunnibunnix/TabFighter.git"
+    "url": "git+https://github.com/xsunnibunnix/TabFighter-2.0.git"
   },
   "author": "Sunny Pacheco",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/xsunnibunnix/TabFighter/issues"
+    "url": "https://github.com/xsunnibunnix/TabFighter-2.0/issues"
   },
-  "homepage": "https://github.com/xsunnibunnix/TabFighter#readme",
+  "homepage": "https://github.com/xsunnibunnix/TabFighter-2.0#readme",
   "dependencies": {
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
