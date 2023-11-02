@@ -4,7 +4,8 @@
   "description": "A retro-inspired Chrome tab manager",
   "main": "dist/popup.js",
   "scripts": {
-    "build": "webpack-cli ./app/popup.tsx --config webpack.config.js",
+    "build": "NODE_ENV=production webpack-cli ./app/popup.tsx --config webpack.config.js",
+    "dev": "NODE_ENV=development webpack-cli ./app/popup.tsx --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-shell-plugin-next": "^2.3.1"
   }
 }

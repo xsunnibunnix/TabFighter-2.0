@@ -1,8 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 const CopyPlugin = require("copy-webpack-plugin");
 
-module.exports = {
+const config = {
   mode: 'production',
   output: {
     filename: 'popup.js',
@@ -70,3 +71,26 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
 };
+
+if (process.env.NODE_ENV != 'production') { 
+  config.watch = true; 
+
+  const shell = new WebpackShellPluginNext({
+    onBuildStart:{
+      scripts: [],
+      blocking: true,
+      parallel: false
+    }, 
+    onBuildEnd:{
+      scripts: [
+        "[ \"$(uname)\" == \"Darwin\" ] && bash -c 'open -a \"Google Chrome\" http://reload.extensions'"
+      ],
+      blocking: true,
+      parallel: false
+    }
+  })
+  
+  config.plugins.push(shell);
+}
+
+module.exports = config;
