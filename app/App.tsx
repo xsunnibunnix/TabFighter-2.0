@@ -6,6 +6,7 @@ import FontProvider from './context/FontContext';
 import RemoveProvider from './context/RemoveContext';
 import ThemeProvider from './context/ThemeContext';
 import SoundProvider from './context/SoundContext';
+import SelectProvider from './context/SelectContext';
 
 const App = () => {
   return (
@@ -14,10 +15,12 @@ const App = () => {
         <SoundProvider>
           <TabProvider>
             <RemoveProvider>
-              <FontProvider>
-                <Header />
-                <TabsContainer />
-              </FontProvider>
+              <SelectProvider>
+                <FontProvider>
+                  <Header />
+                  <TabsContainer />
+                </FontProvider>
+              </SelectProvider>
             </RemoveProvider>
           </TabProvider>
         </SoundProvider>
