@@ -112,8 +112,21 @@ h3 {
   border-radius: 3px;
 }
 
-span {
+.is-selected span { 
+  width: 40px; 
+  opacity: 1;
+}
+
+.select-btn { 
+  position: relative; 
+  margin-left: 4px;
+}
+
+span.delete-btn { 
   background: #e74e3c;
+}
+
+span {
   color: white;
   width: 0;
   transition: 0.2s linear;
