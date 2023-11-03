@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --alert: #e74e3c;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -66,6 +70,21 @@ h3 {
   color: white;
 }
 
+#random-container { 
+  position: relative; 
+  margin-top: 24px;
+}
+
+#random-label { 
+  opacity: 0;
+  color: var(--alert); 
+  padding-top: 4px;
+}
+
+#random:hover + #random-label { 
+  opacity: 1;
+}
+
 .sm-font {
   font-size: 12px;
 }
@@ -107,13 +126,12 @@ h3 {
   opacity: 1;
 }
 
-
 .delete-btn {
   border-radius: 3px;
 }
 
 span {
-  background: #e74e3c;
+  background: var(--alert);
   color: white;
   width: 0;
   transition: 0.2s linear;

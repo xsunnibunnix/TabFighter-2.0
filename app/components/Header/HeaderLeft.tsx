@@ -43,7 +43,10 @@ const HeaderLeft = () => {
 
   return (
     <div className='flex items-center'>
-      <button className='font-medium text-sm' id="random" onClick={randomClick}>Random Mode</button>
+      <div id="random-container" className="flex flex-col items-center">
+        <button className='font-medium text-sm' id="random" onClick={randomClick}>Random Mode</button>
+        <p id="random-label" className='font-medium text-sm'>Kill a random tab!</p>
+      </div>
       {fatality && soundOn && <Fatality play={fatality}/>}
     </div>
   )
