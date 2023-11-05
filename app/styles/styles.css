@@ -119,7 +119,8 @@ h3 {
 
 .select-btn { 
   position: relative; 
-  margin-left: 4px;
+  margin-left: 3px;
+  margin-right: 1px;
 }
 
 span.delete-btn { 
