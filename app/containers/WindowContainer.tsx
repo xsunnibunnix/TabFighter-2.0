@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Tabs from '../components/Tabs';
 import { Tab } from '../../types';
+import { SelectContext } from '../context/SelectContext';
+import { SoundContext } from '../context/SoundContext';
+import { Yahoo } from '../components/Sounds/Yahoo';
 
 interface WindowProps {
   id: string,
@@ -9,13 +12,38 @@ interface WindowProps {
 }
 
 const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
+  const addToSelectedTabs = useContext(SelectContext)?.addToSelectedTabs;
+  const removeFromSelectedTabs = useContext(SelectContext)?.removeFromSelectedTabs;
+  const soundOn = useContext(SoundContext)?.soundOn;
   
+  const [clicked, setClicked] = useState<boolean>(false);
+  const [yahoo, setYahoo] = useState<boolean>(false);
+
+  const tabIds: Array<number>  = [];
+  const handleClick = () => { 
+    if (!clicked) { 
+      if (soundOn) { 
+        setYahoo(true);
+        setTimeout(() => setYahoo(false), 1100);
+        if (addToSelectedTabs) addToSelectedTabs(...tabIds);
+      }
+    } else { 
+      if (removeFromSelectedTabs) removeFromSelectedTabs(...tabIds);
+    }
+
+    setClicked(prev => !prev);
+  }
+
   return (
     <div className='window flex justify-center w-full my-1' id={id}>
-      <p className='text-center py-3 w-1/4'>{windowName}</p>
+      <div className='text-center py-3 w-1/4'>
+        <button className={`text-center window-btn ${clicked ? 'window-btn-selected' : 'window-btn-unselected'}`} onClick={handleClick}>{windowName}</button>
+        {yahoo && soundOn && <Yahoo play={yahoo}/>}
+      </div>
       <ul className='w-3/4 box-border m-1 p-1'>
         {tabs.map(tab => {
           const { active, tabId, title, height, width } = tab;
+          if (tabId) tabIds.push(tabId);
           return <Tabs tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} />
         })}
       </ul>
