@@ -6,6 +6,6 @@ interface YoshiProps {
 
 export const Yoshi = ({play}:YoshiProps) => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/yoshi.wav"/>
+    <audio autoPlay={play} src="../../soundFiles/yoshi.mp3"/>
   )
 }
