@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 const CopyPlugin = require("copy-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
   mode: 'production',
@@ -22,6 +23,13 @@ const config = {
       ]
     })
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      minify: TerserPlugin.uglifyJsMinify,
+        terserOptions: {},
+    })],
+  },
   module: {
     rules: [
       {
