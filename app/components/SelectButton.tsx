@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import { FontContext } from '../context/FontContext';
 
 interface SelectButtonProps {
   selectTab: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
@@ -6,10 +7,11 @@ interface SelectButtonProps {
   checked: boolean;
 }
 
-export const SelectButton = ({ selectTab, tabId, checked  }: SelectButtonProps) => {
+export const SelectButton = ({ selectTab, tabId, checked }: SelectButtonProps) => {
+  const smallActive = useContext(FontContext)?.smallActive;
   return (
     <span className='select-btn flex items-center justify-center h-10 m-auto' id={'selecting-'+tabId}>
-      <input type='checkbox' checked={checked} className='checkbox checkbox-primary checkbox-sm' onClick={selectTab} />
+      <input type='checkbox' checked={checked} className={`checkbox checkbox-primary ${smallActive ? 'checkbox-sm' : 'checkbox-md'}`} onClick={selectTab} />
     </span>
   );
 };

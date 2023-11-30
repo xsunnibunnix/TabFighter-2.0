@@ -14,7 +14,13 @@ export default function FontProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     localStorage.setItem('text', smallActive ? 'sm' : 'lg');
     localText = localStorage.getItem('text');
-    setSmallActive(() => localText === 'sm' ? true : false)
+    setSmallActive(() => localText === 'sm' ? true : false);
+    if (smallActive) {
+      document.body.classList.contains('lg-window') ? document.body.classList.replace('lg-window', 'sm-window') : document.body.classList.add('sm-window');
+    } else {
+      document.body.classList.contains('sm-window') ? document.body.classList.replace('sm-window', 'lg-window') : document.body.classList.add('lg-window');
+    }
   }, [smallActive]);
+
   return <FontContext.Provider value={{ smallActive, setSmallActive }}>{children}</FontContext.Provider>
 }

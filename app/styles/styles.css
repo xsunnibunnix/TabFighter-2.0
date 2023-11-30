@@ -13,10 +13,8 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  max-width: 425px;
-  width: 425px;
   max-height: 400px;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 14px;
   color: hsl(var(--n))
 }
@@ -32,12 +30,28 @@ button:hover{
   cursor: pointer;
 }
 
+.sm-window {
+  max-width: 425px;
+  width: 425px;
+}
+
+.lg-window {
+  max-width: 550px;
+  width: 550px;
+}
+
 /* Header */
 h3 {
-  width: 350px;
+  width: calc(100% - 75px);
+  max-width: 400px;
   font-family: 'Press Start 2P', cursive;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
   text-shadow: 1px 1px 2px hsl(var(--p)), 0 0 .6em hsl(var(--pc));
+}
+
+.options {
+  width: calc(100% - 50px);
+  max-width: 475px;
 }
 
 .font-btn {
@@ -45,11 +59,6 @@ h3 {
   border-radius: 8px;
   background: transparent;
   color: hsl(var(--p));
-}
-
-.options {
-  width: 375px;
-  max-width: 375px;
 }
 
 #random {
@@ -76,23 +85,15 @@ h3 {
 
 /* Tabs List */
 .myTabs {
-  width: 375px;
-  max-width: 375px;
+  width: calc(100% - 50px);
+  max-width: calc(100% - 50px);
 }
 
-.window {
+.window, .tab-li {
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
 }
 
-.window:last-child {
-  border: none;
-}
-
-.tab-li {
-  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
-}
-
-.tab-li:last-child {
+.window:last-child, .tab-li:last-child {
   border: none;
 }
 
