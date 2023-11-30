@@ -96,54 +96,39 @@ h3 {
   border: none;
 }
 
+.tab-li li {
+  overflow-wrap: anywhere;
+  margin-left: 2px;
+}
+
 .tab-li li:hover {
   cursor: pointer;
   background-color: hsl(var(--s));
   border-radius: 8px;
 }
 
-.tab-li:hover span {
-  width: 40px;
-  opacity: 1;
-}
-
-
 .delete-btn {
   border-radius: 3px;
-}
-
-.is-selected span { 
-  width: 40px; 
-  opacity: 1;
 }
 
 .select-btn { 
   position: relative; 
   margin-left: 3px;
-  margin-right: 1px;
+  margin-right: 2px;
 }
 
-span.delete-btn { 
-  background: #e74e3c;
-}
-
-span {
-  color: white;
-  width: 0;
-  transition: 0.2s linear;
-  opacity: 0;
-}
-
-span:hover {
-  cursor: pointer;
+.checkbox:hover {
+  box-shadow:  0 0 2px 9px hsl(var(--s));
+  background-color: hsl(var(--s));
 }
 
 .active {
   background-color: hsl(var(--pf));
   border: .5px solid hsl(var(--pf));
-  box-shadow: 0px 0px 5px 3px hsl(var(--pf));
+  box-shadow: 0px 0px 4px 3px hsl(var(--pf));
   border-radius: 8px;
   color: hsl(var(--n));
+  margin-left: 10px !important;
 }
 
 .delete {

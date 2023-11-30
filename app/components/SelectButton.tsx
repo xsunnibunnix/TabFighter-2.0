@@ -9,7 +9,7 @@ interface SelectButtonProps {
 export const SelectButton = ({ selectTab, tabId, checked  }: SelectButtonProps) => {
   return (
     <span className='select-btn flex items-center justify-center h-10 m-auto' id={'selecting-'+tabId}>
-      <input type='checkbox' checked={checked} className='checkbox' onClick={selectTab} />
+      <input type='checkbox' checked={checked} className='checkbox checkbox-primary checkbox-sm' onClick={selectTab} />
     </span>
   );
 };

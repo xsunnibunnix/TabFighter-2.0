@@ -82,9 +82,7 @@ const Tabs = ({ tabId, active, title, height, width, ...LiProps }: TabsProps) =>
   }
   
   return (
-    <div className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''} ${checked ? 'is-selected' : ''}`} id={String(tabId)} >
-      <DeleteButton closeTab={closeTab} tabId={String(tabId)} />
-      {hadouken && soundOn && <Hadouken play={hadouken} />}
+    <div className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''}`} id={String(tabId)} >
       <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked}/>
       <li className={`flex items-center list-none w-full cursor-pointer p-1 pl-2.5 ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
       {yoshi && soundOn && <Yoshi play={yoshi} />}

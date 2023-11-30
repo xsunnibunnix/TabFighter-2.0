@@ -52,7 +52,7 @@ const TabsContainer = () => {
   }
 
   return (
-    <div className={`myTabs flex flex-col items-center justify-center m-auto py-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
+    <div className={`myTabs flex flex-col items-center justify-center m-auto pt-1 pb-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
       <select className="select select-bordered w-full max-w-xs mb-2" onChange={e => handleChange(e)} >
         <option selected>All Windows</option>
         {windowList}
