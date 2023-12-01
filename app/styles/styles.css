@@ -129,6 +129,9 @@ h3 {
   box-shadow: 0px 0px 4px 3px hsl(var(--pf));
   border-radius: 8px;
   color: hsl(var(--n));
+}
+
+.active li {
   margin-left: 10px !important;
 }
 
