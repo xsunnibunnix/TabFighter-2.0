@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, ChangeEvent } from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import WindowContainer from "./WindowContainer";
 import { TabContext } from "../context/TabContext";
 import { FontContext } from "../context/FontContext";
@@ -30,7 +31,7 @@ const TabsContainer = () => {
     }
   });
 
-  const windows = [];
+  const windows:React.JSX.Element[] = [];
   for (const window in allTabs) {
     if (!selected) {
       if (Number(window) === currentWindow?.id) {
@@ -51,13 +52,17 @@ const TabsContainer = () => {
     setSelected(() => windowId !== '' ? Number(windowId) : null);
   }
 
+  const onDragEnd = () => { };
+
   return (
     <div className={`myTabs flex flex-col items-center justify-center m-auto pt-1 pb-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
       <select className="select select-bordered w-full max-w-xs mb-2" onChange={e => handleChange(e)} >
         <option selected>All Windows</option>
         {windowList}
       </select>
-      {windows}
+      <DragDropContext onDragEnd={onDragEnd}>
+        {windows}
+      </DragDropContext>
     </div>
   )
 }

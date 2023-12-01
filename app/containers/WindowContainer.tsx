@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import Tabs from '../components/Tabs';
 import { Tab } from '../../types';
 import { SelectContext } from '../context/SelectContext';
@@ -34,19 +35,26 @@ const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
     setClicked(prev => !prev);
   }
 
+  const tabsList = tabs.map((tab, index) => {
+    const { active, tabId, title, height, width } = tab;
+    if (tabId) tabIds.push(tabId);
+    return <Tabs tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} index={index} />
+  })
+
   return (
     <div className='window flex justify-center w-full my-1' id={id}>
       <div className='text-center py-3 w-1/4'>
         <button className={`text-center window-btn ${clicked ? 'window-btn-selected' : 'window-btn-unselected'}`} onClick={handleClick}>{windowName}</button>
         {yahoo && soundOn && <Yahoo play={yahoo}/>}
       </div>
-      <ul className='w-3/4 box-border m-1 p-1'>
-        {tabs.map(tab => {
-          const { active, tabId, title, height, width } = tab;
-          if (tabId) tabIds.push(tabId);
-          return <Tabs tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} />
-        })}
-      </ul>
+      <Droppable droppableId={`${windowName}-list`}>
+        {provided => (
+          <div ref={provided.innerRef} {...provided.droppableProps} className='w-3/4 box-border m-1 p-1'>
+            {tabsList}
+            {provided.placeholder}
+          </div>
+        )}
+        </Droppable>
     </div>
   )
 }

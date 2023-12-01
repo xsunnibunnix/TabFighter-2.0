@@ -1,4 +1,5 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import { DeleteButton } from './DeleteButton';
 import { Yoshi } from './Sounds/Yoshi';
 import { Hadouken } from './Sounds/Hadouken';
@@ -16,14 +17,15 @@ interface TabsProps {
   title: string | undefined,
   windowId: string,
   height: number | undefined,
-  width: number | undefined
+  width: number | undefined,
+  index: number
 }
 
 export interface LiProps extends React.LiHTMLAttributes<HTMLLIElement> {
   windowId: string
 }
 
-const Tabs = ({ tabId, active, title, height, width, ...LiProps }: TabsProps) => {
+const Tabs = ({ tabId, active, title, height, width, index, ...LiProps }: TabsProps) => {
   const [yoshi, setYoshi] = useState<boolean>(false);
   const [hadouken, setHadouken] = useState<boolean>(false);
 
@@ -84,11 +86,20 @@ const Tabs = ({ tabId, active, title, height, width, ...LiProps }: TabsProps) =>
   }
   
   return (
-    <div className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''} ${checked ? 'bg-neutral/10 rounded-md p-0.5' : ''}`} id={String(tabId)} >
-      <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked}/>
-      <li className={`flex items-center list-none w-full cursor-pointer ${smallActive ?'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
-      {yoshi && soundOn && <Yoshi play={yoshi} />}
-    </div>
+    <Draggable draggableId={String(tabId)} index={index}>
+      {provided => (
+        <div ref={provided.innerRef}
+          className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''} ${checked ? 'bg-neutral/10 rounded-md p-0.5' : ''}`}
+          id={String(tabId)}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked}/>
+          <li className={`flex items-center list-none w-full cursor-pointer ${smallActive ?'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
+          {yoshi && soundOn && <Yoshi play={yoshi} />}
+        </div>
+      )}
+    </Draggable>
   )
 }
 
