@@ -7,6 +7,7 @@ import getTabs from '../utils/getTabs';
 import { RemoveContext } from '../context/RemoveContext';
 import { SoundContext } from '../context/SoundContext';
 import { SelectContext } from '../context/SelectContext';
+import { FontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
 
 interface TabsProps {
@@ -33,6 +34,7 @@ const Tabs = ({ tabId, active, title, height, width, ...LiProps }: TabsProps) =>
   const setAllTabs = useContext(TabContext)?.setAllTabs;
   const tabToDelete = useContext(RemoveContext)?.tabToDelete;
   const soundOn = useContext(SoundContext)?.soundOn;
+  const smallActive = useContext(FontContext)?.smallActive;
 
   const goToTab = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const target = e.target as HTMLLIElement;
@@ -84,7 +86,7 @@ const Tabs = ({ tabId, active, title, height, width, ...LiProps }: TabsProps) =>
   return (
     <div className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''} ${checked ? 'bg-neutral/10 rounded-md p-0.5' : ''}`} id={String(tabId)} >
       <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked}/>
-      <li className={`flex items-center list-none w-full cursor-pointer p-1 pl-2.5 ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
+      <li className={`flex items-center list-none w-full cursor-pointer ${smallActive ?'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
       {yoshi && soundOn && <Yoshi play={yoshi} />}
     </div>
   )
