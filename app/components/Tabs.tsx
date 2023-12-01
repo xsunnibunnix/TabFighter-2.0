@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Tab } from '../../types';
 import { Draggable } from 'react-beautiful-dnd';
 import { DeleteButton } from './DeleteButton';
 import { Yoshi } from './Sounds/Yoshi';
@@ -11,21 +12,12 @@ import { SelectContext } from '../context/SelectContext';
 import { FontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
 
-interface TabsProps {
-  tabId: number | undefined,
-  active: boolean,
-  title: string | undefined,
-  windowId: string,
-  height: number | undefined,
-  width: number | undefined,
-  index: number
-}
 
 export interface LiProps extends React.LiHTMLAttributes<HTMLLIElement> {
   windowId: string
 }
 
-const Tabs = ({ tabId, active, title, height, width, index, ...LiProps }: TabsProps) => {
+const Tabs = ({ tabId, active, title, height, width, index, ...LiProps }: Tab) => {
   const [yoshi, setYoshi] = useState<boolean>(false);
   const [hadouken, setHadouken] = useState<boolean>(false);
 

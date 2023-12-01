@@ -35,10 +35,11 @@ const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
     setClicked(prev => !prev);
   }
 
-  const tabsList = tabs.map((tab, index) => {
-    const { active, tabId, title, height, width } = tab;
+  const tabsList = tabs.map(tab => {
+    const { tabId } = tab;
+    // const { active, tabId, title, height, width, audible, mutedInfo, index } = tab;
     if (tabId) tabIds.push(tabId);
-    return <Tabs tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} index={index} />
+    return <Tabs /*tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} index={index}*/ {...tab} />
   })
 
   return (

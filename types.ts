@@ -1,10 +1,15 @@
+type MutedInfo = chrome.tabs.MutedInfo;
+
 export type Tab = {
   active: boolean,
   tabId: number | undefined,
   title: string | undefined,
   windowId: number,
   height: number | undefined,
-  width: number | undefined
+  width: number | undefined,
+  audible: boolean | undefined,
+  mutedInfo: MutedInfo | undefined,
+  index: number
 }
 
 export type AllTabs = {
