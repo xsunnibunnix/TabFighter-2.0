@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, ChangeEvent } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, DragUpdate } from "react-beautiful-dnd";
 import WindowContainer from "./WindowContainer";
 import { TabContext } from "../context/TabContext";
 import { FontContext } from "../context/FontContext";
@@ -9,6 +9,7 @@ const TabsContainer = () => {
   const [currentWindow, setCurrentWindow] = useState<chrome.windows.Window | null>(null);
   const [selected, setSelected] = useState<number | null>(null)
   const allTabs = useContext(TabContext)?.allTabs;
+  const updateTabs = useContext(TabContext)?.updateTabs;
   const smallActive = useContext(FontContext)?.smallActive;
 
   useEffect(() => {
@@ -52,7 +53,13 @@ const TabsContainer = () => {
     setSelected(() => windowId !== '' ? Number(windowId) : null);
   }
 
-  const onDragEnd = () => { };
+  const onDragEnd = async (e: DragUpdate) => {
+    const { destination, draggableId } = e;
+    const index = Number(destination?.index);
+    const windowId = Number(destination?.droppableId);
+    await chrome.tabs.move(Number(draggableId), { index, windowId });
+    if(updateTabs) updateTabs();
+  }
 
   return (
     <div className={`myTabs flex flex-col items-center justify-center m-auto pt-1 pb-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
@@ -60,7 +67,7 @@ const TabsContainer = () => {
         <option selected>All Windows</option>
         {windowList}
       </select>
-      <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={e => onDragEnd(e)}>
         {windows}
       </DragDropContext>
     </div>

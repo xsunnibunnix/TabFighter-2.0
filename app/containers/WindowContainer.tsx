@@ -48,7 +48,7 @@ const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
         <button className={`text-center window-btn ${clicked ? 'window-btn-selected' : 'window-btn-unselected'}`} onClick={handleClick}>{windowName}</button>
         {yahoo && soundOn && <Yahoo play={yahoo}/>}
       </div>
-      <Droppable droppableId={`${windowName}-list`}>
+      <Droppable droppableId={id}>
         {provided => (
           <div ref={provided.innerRef} {...provided.droppableProps} className='w-3/4 box-border m-1 p-1'>
             {tabsList}

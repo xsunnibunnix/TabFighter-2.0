@@ -13,11 +13,7 @@ import { FontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
 
 
-export interface LiProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  windowId: string
-}
-
-const Tabs = ({ tabId, active, title, height, width, index, ...LiProps }: Tab) => {
+const Tabs = ({ tabId, active, title, height, width, index,...LiProps }: Tab) => {
   const [yoshi, setYoshi] = useState<boolean>(false);
   const [hadouken, setHadouken] = useState<boolean>(false);
 

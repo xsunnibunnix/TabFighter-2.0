@@ -10,7 +10,7 @@ const getTabs = async () => {
     }
     return acc;
   }, {});
-  console.log(tabs);
+
   const allTabs = tabs.reduce((acc: AllTabs, curr): AllTabs => {
     const { active, id, title, windowId, audible, mutedInfo, index } = curr;
     if (!(windowId in acc)) acc[windowId] = [];
@@ -27,6 +27,7 @@ const getTabs = async () => {
     });
     return acc;
   }, {});
+
   return allTabs;
 }
 
