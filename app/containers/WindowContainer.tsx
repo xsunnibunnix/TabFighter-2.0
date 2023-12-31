@@ -37,9 +37,8 @@ const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
 
   const tabsList = tabs.map(tab => {
     const { tabId } = tab;
-    // const { active, tabId, title, height, width, audible, mutedInfo, index } = tab;
     if (tabId) tabIds.push(tabId);
-    return <Tabs /*tabId={tabId} active={active} title={title} windowId={id} height={height} width={width} index={index}*/ {...tab} />
+    return <Tabs {...tab} />
   })
 
   return (

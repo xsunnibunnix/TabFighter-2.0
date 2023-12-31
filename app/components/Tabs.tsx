@@ -22,6 +22,8 @@ const Tabs = ({ tabId, active, title, height, width, index,...LiProps }: Tab) =>
   const removeFromSelectedTabs = useContext(SelectContext)?.removeFromSelectedTabs;
   
   const setAllTabs = useContext(TabContext)?.setAllTabs;
+  // const allTabs = useContext(TabContext)?.allTabs;
+  // const updateTabs = useContext(TabContext)?.updateTabs;
   const tabToDelete = useContext(RemoveContext)?.tabToDelete;
   const soundOn = useContext(SoundContext)?.soundOn;
   const smallActive = useContext(FontContext)?.smallActive;
@@ -64,6 +66,13 @@ const Tabs = ({ tabId, active, title, height, width, index,...LiProps }: Tab) =>
       if (removeFromSelectedTabs) removeFromSelectedTabs();
       if (setAllTabs) setAllTabs(tabs);
     }), soundOn ? 1300 : 400);
+
+    // if (updateTabs) {
+    //   setTimeout(() => {
+    //     if (removeFromSelectedTabs && allTabs) removeFromSelectedTabs(allTabs);
+    //     updateTabs();
+    //   }, soundOn ? 1300 : 400)
+    // }
   };
 
   const selectTab = () => { 
@@ -72,18 +81,25 @@ const Tabs = ({ tabId, active, title, height, width, index,...LiProps }: Tab) =>
       else removeFromSelectedTabs(tabId)
     }
   }
-  
+
   return (
-    <Draggable draggableId={String(tabId)} index={index}>
-      {provided => (
-        <div ref={provided.innerRef}
+    <Draggable draggableId={String(tabId)} index={index} key={String(tabId)}>
+      {(provided, snapshot) => (
+        <div
+          ref={provided.innerRef}
           className={`tab-li flex w-full ${tabToDelete === tabId ? 'delete' : ''} ${checked ? 'bg-neutral/10 rounded-md p-0.5' : ''}`}
           id={String(tabId)}
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
         >
           <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked}/>
-          <li className={`flex items-center list-none w-full cursor-pointer ${smallActive ?'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active ? 'active' : ''}`} onClick={(e) => goToTab(e)} {...LiProps}>{title}</li>
+          <li
+            {...provided.dragHandleProps}
+            className={`flex items-center list-none w-full cursor-pointer ${smallActive ? 'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active || snapshot.isDragging ? 'active' : ''}`}
+            onClick={(e) => goToTab(e)}
+            {...LiProps}
+          >
+            {title}
+          </li>
           {yoshi && soundOn && <Yoshi play={yoshi} />}
         </div>
       )}

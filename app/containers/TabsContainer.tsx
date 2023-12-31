@@ -54,11 +54,13 @@ const TabsContainer = () => {
   }
 
   const onDragEnd = async (e: DragUpdate) => {
-    const { destination, draggableId } = e;
+    const { destination, draggableId, source } = e;
+    if (!destination) return;
+    if (destination.droppableId === source.droppableId && destination.index === source.index) return;
     const index = Number(destination?.index);
     const windowId = Number(destination?.droppableId);
     await chrome.tabs.move(Number(draggableId), { index, windowId });
-    if(updateTabs) updateTabs();
+    if (updateTabs) updateTabs();
   }
 
   return (
