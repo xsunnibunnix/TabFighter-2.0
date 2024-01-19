@@ -13,7 +13,7 @@ import { FontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
 
 
-const Tabs = ({ tabId, active, title, height, width, index,...LiProps }: Tab) => {
+const Tabs = ({ tabId, active, title, height, width, index, windowId,...LiProps }: Tab) => {
   const [yoshi, setYoshi] = useState<boolean>(false);
   const [hadouken, setHadouken] = useState<boolean>(false);
 
@@ -29,8 +29,6 @@ const Tabs = ({ tabId, active, title, height, width, index,...LiProps }: Tab) =>
   const smallActive = useContext(FontContext)?.smallActive;
 
   const goToTab = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const target = e.target as HTMLLIElement;
-    const windowId: number = Number(target.attributes[1].value);
     if (soundOn) {
       setYoshi(true);
       setTimeout(() => setYoshi(false), 2000);
