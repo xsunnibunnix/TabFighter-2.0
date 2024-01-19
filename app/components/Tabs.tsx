@@ -13,7 +13,7 @@ import { FontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
 import TabAudio from './TabAudio';
 
-const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo,...LiProps }: Tab) => {
+const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, windowId }: Tab) => {
   const [yoshi, setYoshi] = useState<boolean>(false);
   const [hadouken, setHadouken] = useState<boolean>(false);
 
@@ -29,8 +29,6 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo,.
   const smallActive = useContext(FontContext)?.smallActive;
 
   const goToTab = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const target = e.target as HTMLLIElement;
-    const windowId: number = Number(target.attributes[1].value);
     if (soundOn) {
       setYoshi(true);
       setTimeout(() => setYoshi(false), 2000);
@@ -97,7 +95,7 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo,.
             {...provided.dragHandleProps}
             className={`flex items-center list-none w-full cursor-pointer ${smallActive ? 'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active || snapshot.isDragging ? 'active' : ''}`}
             onClick={(e) => goToTab(e)}
-            {...LiProps}
+            // {...LiProps}
           >
             {title}
           </li>

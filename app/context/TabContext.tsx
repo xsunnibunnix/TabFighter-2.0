@@ -17,6 +17,5 @@ export default function TabProvider({ children }: { children: React.ReactNode })
       .then(tabs => setAllTabs(tabs));
   };
   useEffect(() => updateTabs(), []);
-  console.log(allTabs);
   return <TabContext.Provider value={{ allTabs, setAllTabs, updateTabs }}>{children}</TabContext.Provider>
 }
