@@ -1,23 +1,17 @@
-import React, {useContext} from "react";
+import React from "react";
 import darkVolOn from '../../icons/darkvolon.svg';
 import darkVolOff from '../../icons/darkvoloff.svg';
 import lightVolOn from '../../icons/lightvolon.svg';
 import lightVolOff from '../../icons/lightvoloff.svg';
-import { SoundContext } from "../../context/SoundContext";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useSoundContext } from "../../context/SoundContext";
+import { useThemeContext } from "../../context/ThemeContext";
 
 const Sound = () => {
-  const soundOn = useContext(SoundContext)?.soundOn;
-  const setSoundOn = useContext(SoundContext)?.setSoundOn;
-  const darkMode = useContext(ThemeContext)?.darkMode;
+  const { soundOn, setSoundOn } = useSoundContext();
+  const { darkMode } = useThemeContext();
 
-  let volOn;
-  let volOff;
-
-  if (darkMode) volOn = darkVolOn;
-  else volOn = lightVolOn;
-  if (darkMode) volOff = darkVolOff;
-  else volOff = lightVolOff;
+  const volOn:string = darkMode ? darkVolOn : lightVolOn;
+  const volOff: string = darkMode ? darkVolOff : lightVolOff;
 
   const handleMute = () => {
     if (setSoundOn) setSoundOn(prev => !prev);

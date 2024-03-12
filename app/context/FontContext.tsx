@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
 interface FontContextProps {
   smallActive: boolean,
@@ -23,4 +23,12 @@ export default function FontProvider({ children }: { children: React.ReactNode }
   }, [smallActive]);
 
   return <FontContext.Provider value={{ smallActive, setSmallActive }}>{children}</FontContext.Provider>
+}
+
+export const useFontContext = () => {
+  const fontContext = useContext(FontContext);
+  if (!fontContext) {
+    throw new Error('FontContext must be used within the FontContext Provider')
+  }
+  return fontContext;
 }

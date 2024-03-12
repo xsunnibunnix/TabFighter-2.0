@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
 interface SoundContextProps {
   soundOn: boolean,
@@ -18,4 +18,12 @@ export default function SoundProvider ({ children }: { children: React.ReactNode
   }, [soundOn]);
 
   return <SoundContext.Provider value={{ soundOn, setSoundOn }}>{children}</SoundContext.Provider>;
+}
+
+export const useSoundContext = () => {
+  const soundContext = useContext(SoundContext);
+  if (!soundContext) {
+    throw new Error('SoundContext must be used within the SoundContext Provider')
+  };
+  return soundContext;
 }

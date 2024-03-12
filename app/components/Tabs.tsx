@@ -5,11 +5,10 @@ import { DeleteButton } from './DeleteButton';
 import { Yoshi } from './Sounds/Yoshi';
 import { Hadouken } from './Sounds/Hadouken';
 import getTabs from '../utils/getTabs';
-import { TabContext } from '../context/TabContext';
-import { RemoveContext } from '../context/RemoveContext';
-import { SoundContext } from '../context/SoundContext';
+import { useTabContext } from '../context/TabContext';
+import { useSoundContext } from '../context/SoundContext';
 import { SelectContext } from '../context/SelectContext';
-import { FontContext } from '../context/FontContext';
+import { useFontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
 import TabAudio from './TabAudio';
 
@@ -21,12 +20,9 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, 
   const addToSelectedTabs = useContext(SelectContext)?.addToSelectedTabs; 
   const removeFromSelectedTabs = useContext(SelectContext)?.removeFromSelectedTabs;
   
-  const setAllTabs = useContext(TabContext)?.setAllTabs;
-  // const allTabs = useContext(TabContext)?.allTabs;
-  // const updateTabs = useContext(TabContext)?.updateTabs;
-  const tabToDelete = useContext(RemoveContext)?.tabToDelete;
-  const soundOn = useContext(SoundContext)?.soundOn;
-  const smallActive = useContext(FontContext)?.smallActive;
+  const {allTabs, setAllTabs, updateTabs, tabToDelete } = useTabContext();
+  const { soundOn } = useSoundContext();
+  const { smallActive } = useFontContext();
 
   const goToTab = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     if (soundOn) {

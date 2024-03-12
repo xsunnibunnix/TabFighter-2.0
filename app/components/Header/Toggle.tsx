@@ -3,25 +3,19 @@ import darkMoon from '../../icons/darkmoon.svg';
 import lightMoon from '../../icons/lightmoon.svg';
 import darkSun from '../../icons/darksun.svg';
 import lightSun from '../../icons/lightsun.svg';
-import { ThemeContext } from '../../context/ThemeContext';
+import { useThemeContext } from '../../context/ThemeContext';
+import { useSoundContext } from '../../context/SoundContext';
 import { Coin } from '../Sounds/Coin';
-import { SoundContext } from '../../context/SoundContext';
 
 const Toggle = () => {
-  const darkMode = useContext(ThemeContext)?.darkMode;
-  const setDarkMode = useContext(ThemeContext)?.setDarkMode;
-  const setTheme = useContext(ThemeContext)?.setTheme;
-
-  const soundOn = useContext(SoundContext)?.soundOn;
+ const { darkMode, setDarkMode, theme, setTheme } = useThemeContext();
+  const { soundOn } = useSoundContext();
   const [coin, setCoin] = useState<boolean>(false);
 
-  if (setTheme) {
-    if (darkMode) setTheme('dark');
-    else setTheme('light')
-  }
-
-  const handleToggle = (e:any) => {
-    if (setDarkMode) setDarkMode(prev => !prev);
+  const handleToggle = () => {
+    setDarkMode(prev => !prev);
+    if (theme === 'dark') setTheme('light');
+    else setTheme('dark');
     if (soundOn) { 
       setCoin(true); 
       setTimeout(() => setCoin(false), 600);
@@ -34,7 +28,7 @@ const Toggle = () => {
         <input
           type='checkbox'
           className='toggle toggle-primary'
-          onChange={(e) => handleToggle(e)}
+          onChange={handleToggle}
           checked={!darkMode}
         />
         {coin && soundOn && <Coin play={coin} />}

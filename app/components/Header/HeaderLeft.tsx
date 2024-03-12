@@ -1,18 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { Fatality } from '../Sounds/Fatality';
-import { TabContext } from '../../context/TabContext';
-import { RemoveContext } from '../../context/RemoveContext';
-import { SoundContext } from '../../context/SoundContext';
+import { useTabContext } from '../../context/TabContext';
+import { useSoundContext } from '../../context/SoundContext';
 import { Tab } from '../../../types';
 import getTabs from '../../utils/getTabs';
 
 const HeaderLeft = () => {
   const [fatality, setFatality] = useState(false);
-  const setTabToDelete = useContext(RemoveContext)?.setTabToDelete;
-  const allTabs = useContext(TabContext)?.allTabs;
-  const setAllTabs = useContext(TabContext)?.setAllTabs;
-  const soundOn = useContext(SoundContext)?.soundOn;
-  
+  const { setTabToDelete, allTabs, setAllTabs} = useTabContext();
+  const { soundOn } = useSoundContext();
+
+  // Reduces all tabs on all windows to a single array and selects a tab at random to delete
   const randomClick = async () => {
     if (allTabs) {
       const tabsList = Object.values(allTabs).reduce((acc, curr): Tab[] => {
@@ -20,19 +18,17 @@ const HeaderLeft = () => {
         return acc;
       }, []);
       const randNum = Math.floor(Math.random() * tabsList.length);
-      const randTab = tabsList[randNum].tabId;
+      const randTab = tabsList[randNum];
 
-
-      if(soundOn) setFatality(prev => !prev);
       if (randTab) {
-        if (setTabToDelete) setTabToDelete(randTab);
-        const tabToDelete = await chrome.tabs.get(randTab);
-        const { active, windowId } = tabToDelete;
+        if(soundOn) setFatality(prev => !prev);
+        if (setTabToDelete) setTabToDelete(randTab.tabId!);
+        const { active } = randTab;
         let timeToRemove: number;
         if (active) timeToRemove = 1500;
         else timeToRemove = 500;
     
-        setTimeout(chrome.tabs.remove, timeToRemove, randTab);
+        setTimeout(chrome.tabs.remove, timeToRemove, randTab.tabId);
         setTimeout(() => getTabs().then(tabs => {
           if (setAllTabs) setAllTabs(tabs);
         }), timeToRemove + 100);

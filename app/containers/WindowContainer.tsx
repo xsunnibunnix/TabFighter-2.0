@@ -3,7 +3,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import Tabs from '../components/Tabs';
 import { Tab } from '../../types';
 import { SelectContext } from '../context/SelectContext';
-import { SoundContext } from '../context/SoundContext';
+import { useSoundContext } from '../context/SoundContext';
 import { Yahoo } from '../components/Sounds/Yahoo';
 
 interface WindowProps {
@@ -15,7 +15,7 @@ interface WindowProps {
 const WindowContainer = ({id, tabs, windowName}: WindowProps) => {
   const addToSelectedTabs = useContext(SelectContext)?.addToSelectedTabs;
   const removeFromSelectedTabs = useContext(SelectContext)?.removeFromSelectedTabs;
-  const soundOn = useContext(SoundContext)?.soundOn;
+  const { soundOn } = useSoundContext();
   
   const [clicked, setClicked] = useState<boolean>(false);
   const [yahoo, setYahoo] = useState<boolean>(false);

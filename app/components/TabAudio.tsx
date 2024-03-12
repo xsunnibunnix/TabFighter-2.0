@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ThemeContext } from '../context/ThemeContext';
-import { TabContext } from '../context/TabContext';
+import { useThemeContext } from '../context/ThemeContext';
+import { useTabContext } from '../context/TabContext';
 import darkVolOn from '../icons/darkvolon.svg'
 import darkVolOff from '../icons/darkvoloff.svg';
 import lightVolOn from '../icons/lightvolon.svg';
@@ -9,8 +9,8 @@ import { TabAudio } from "../../types";
 
 
 const TabAudio = ({audible, mutedInfo, tabId}:TabAudio) => {
-  const darkMode = useContext(ThemeContext)?.darkMode;
-  const updateTabs = useContext(TabContext)?.updateTabs!;
+  const { darkMode } = useThemeContext();
+  const { updateTabs } = useTabContext();
   const volOn = darkMode ? darkVolOn : lightVolOn;
   const volOff = darkMode ? darkVolOff : lightVolOff;
   const tabMuted = mutedInfo?.muted;

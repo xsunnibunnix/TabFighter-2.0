@@ -1,16 +1,17 @@
 import React, { useContext, useState, useEffect, ChangeEvent } from "react";
 import { DragDropContext, DragUpdate } from "react-beautiful-dnd";
 import WindowContainer from "./WindowContainer";
-import { TabContext } from "../context/TabContext";
+import { useTabContext } from "../context/TabContext";
 import { FontContext } from "../context/FontContext";
 import { WindowNames } from "../../types";
 
 const TabsContainer = () => {
   const [currentWindow, setCurrentWindow] = useState<chrome.windows.Window | null>(null);
-  const [selected, setSelected] = useState<number | null>(null)
-  const allTabs = useContext(TabContext)?.allTabs;
-  const updateTabs = useContext(TabContext)?.updateTabs;
+  const [selected, setSelected] = useState<number | null>(null);
+  const { allTabs, updateTabs } = useTabContext();
   const smallActive = useContext(FontContext)?.smallActive;
+
+  console.log('rendering Tabs Container', allTabs)
 
   useEffect(() => {
     chrome.windows.getCurrent().then(window => setCurrentWindow(window));

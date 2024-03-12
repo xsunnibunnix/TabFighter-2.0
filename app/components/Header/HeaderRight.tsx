@@ -1,16 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { Grow } from '../Sounds/Grow';
 import { Shrink } from '../Sounds/Shrink';
-import { FontContext } from '../../context/FontContext';
-import { SoundContext } from '../../context/SoundContext';
+import { useFontContext } from '../../context/FontContext';
+import { useSoundContext } from '../../context/SoundContext';
 
 const HeaderRight = () => {
   const [shrink, setShrink] = useState(false);
   const [grow, setGrow] = useState(false);
-
-  const smallActive = useContext(FontContext)?.smallActive;
-  const setSmallActive = useContext(FontContext)?.setSmallActive;
-  const soundOn = useContext(SoundContext)?.soundOn;
+  const { smallActive, setSmallActive } = useFontContext();
+  const { soundOn } = useSoundContext();
 
   const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const target = e.target as HTMLButtonElement;
