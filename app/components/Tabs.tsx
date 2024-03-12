@@ -4,16 +4,16 @@ import { Draggable } from 'react-beautiful-dnd';
 import { DeleteButton } from './DeleteButton';
 import { Yoshi } from './Sounds/Yoshi';
 import { Hadouken } from './Sounds/Hadouken';
-import { TabContext } from '../context/TabContext';
 import getTabs from '../utils/getTabs';
+import { TabContext } from '../context/TabContext';
 import { RemoveContext } from '../context/RemoveContext';
 import { SoundContext } from '../context/SoundContext';
 import { SelectContext } from '../context/SelectContext';
 import { FontContext } from '../context/FontContext';
 import { SelectButton } from './SelectButton';
+import TabAudio from './TabAudio';
 
-
-const Tabs = ({ tabId, active, title, height, width, index, windowId,...LiProps }: Tab) => {
+const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, windowId }: Tab) => {
   const [yoshi, setYoshi] = useState<boolean>(false);
   const [hadouken, setHadouken] = useState<boolean>(false);
 
@@ -89,12 +89,13 @@ const Tabs = ({ tabId, active, title, height, width, index, windowId,...LiProps 
           id={String(tabId)}
           {...provided.draggableProps}
         >
-          <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked}/>
+          <SelectButton selectTab={selectTab} tabId={String(tabId)} checked={checked} />
+          {audible && <TabAudio audible={audible} mutedInfo={mutedInfo} tabId={tabId} />}
           <li
             {...provided.dragHandleProps}
             className={`flex items-center list-none w-full cursor-pointer ${smallActive ? 'p-1 pl-2' : 'p-2.5 pl-3.5'} ${active || snapshot.isDragging ? 'active' : ''}`}
             onClick={(e) => goToTab(e)}
-            {...LiProps}
+            // {...LiProps}
           >
             {title}
           </li>
