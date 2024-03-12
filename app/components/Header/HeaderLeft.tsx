@@ -2,12 +2,16 @@ import React, { useState, useContext } from 'react';
 import { Fatality } from '../Sounds/Fatality';
 import { useTabContext } from '../../context/TabContext';
 import { useSoundContext } from '../../context/SoundContext';
+import { useThemeContext } from "../../context/ThemeContext";
 import { Tab } from '../../../types';
 import getTabs from '../../utils/getTabs';
+import darkRandom from '../../icons/darkrandom.svg';
+import lightRandom from '../../icons/lightrandom.svg';
 
 const HeaderLeft = () => {
   const [fatality, setFatality] = useState(false);
-  const { setTabToDelete, allTabs, setAllTabs} = useTabContext();
+  const { setTabToDelete, allTabs, setAllTabs } = useTabContext();
+  const { darkMode } = useThemeContext();
   const { soundOn } = useSoundContext();
 
   // Reduces all tabs on all windows to a single array and selects a tab at random to delete
@@ -39,8 +43,8 @@ const HeaderLeft = () => {
 
   return (
     <div className='flex items-center'>
-      <button className='font-medium text-sm tooltip' id="random" data-tip='Close a tab at random' onClick={randomClick}>
-        Random
+      <button className={ `tooltip tooltip-right btn btn-primary btn-square btn-sm h-[2.5rem] w-[2.5rem] ${!darkMode ? 'btn-outline' : ''}` } id="random" data-tip='Close a tab at random' onClick={randomClick}>
+      <img className='flex justify-center items-center w-fit h-fit p-1 stroke-current' src={darkMode ? darkRandom : lightRandom} alt="Random mode button" />
       </button>
       {fatality && soundOn && <Fatality play={fatality}/>}
     </div>

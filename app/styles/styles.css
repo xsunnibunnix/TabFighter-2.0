@@ -61,20 +61,6 @@ h3 {
   color: hsl(var(--p));
 }
 
-#random {
-  height: 32px;
-  padding: 1rem;
-  border: 2px solid hsl(var(--p));
-  border-radius: 8px;
-  background: transparent;
-  color: hsl(var(--p));
-}
-
-#random:hover, .font-btn:hover {
-  background: hsl(var(--p));
-  color: white;
-}
-
 .sm-font {
   font-size: 12px;
 }
