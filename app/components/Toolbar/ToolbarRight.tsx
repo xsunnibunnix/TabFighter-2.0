@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Grow } from '../Sounds/Grow';
 import { Shrink } from '../Sounds/Shrink';
 import { useFontContext } from '../../context/FontContext';
 import { useSoundContext } from '../../context/SoundContext';
 
-const HeaderRight = () => {
+const ToolbarRight = () => {
   const [shrink, setShrink] = useState(false);
   const [grow, setGrow] = useState(false);
   const { smallActive, setSmallActive } = useFontContext();
@@ -33,4 +33,4 @@ const HeaderRight = () => {
   )
 }
 
-export default HeaderRight;
+export default ToolbarRight;

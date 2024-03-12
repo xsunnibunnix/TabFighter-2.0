@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useThemeContext } from '../context/ThemeContext';
 import { useTabContext } from '../context/TabContext';
 import darkVolOn from '../icons/darkvolon.svg'

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import darkMoon from '../../icons/darkmoon.svg';
 import lightMoon from '../../icons/lightmoon.svg';
 import darkSun from '../../icons/darksun.svg';

@@ -20,7 +20,7 @@ const Sound = () => {
   return (
     <div className='flex items-center px-5 pt-5 pb-2'>
       <button className={`btn btn-square btn-sm h-[2.5rem] w-[2.5rem] ${soundOn ? `btn-primary ${!darkMode ? 'btn-outline': ''}`: 'btn-ghost'}`} onClick={handleMute}>
-        <img className='flex justify-center items-center w-6 h-6 stroke-current' src={soundOn ? volOn : volOff} alt="sound-button" />
+        <img className='flex justify-center items-center w-6 h-6 stroke-current' src={soundOn ? volOn : volOff} alt="sound button" />
       </button>
     </div>
   )

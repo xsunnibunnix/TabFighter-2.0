@@ -24,10 +24,10 @@ button {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-}
 
-button:hover{
-  cursor: pointer;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .sm-window {
@@ -86,12 +86,12 @@ h3 {
 .tab-li li {
   overflow-wrap: anywhere;
   margin-left: 2px;
-}
 
-.tab-li li:hover {
-  cursor: pointer;
-  background-color: hsl(var(--s));
-  border-radius: 8px;
+  &:hover {
+    cursor: pointer;
+    background-color: hsl(var(--s));
+    border-radius: 8px;
+  }
 }
 
 .delete-btn {
@@ -115,10 +115,10 @@ h3 {
   box-shadow: 0px 0px 4px 3px hsl(var(--pf));
   border-radius: 8px;
   color: hsl(var(--n));
-}
 
-.active li {
-  margin-left: 10px !important;
+  li {
+    margin-left: 10px !important;
+  }
 }
 
 .delete {
