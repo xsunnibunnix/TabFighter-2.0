@@ -41,8 +41,10 @@ __Be sure to turn your sound on and enjoy!__
 ![Light Mode](./assets/LightMode.png)
 ### Select
 #### Select All
-![SelectAll](./assets/SelectAll.png)
+![Select All](./assets/SelectAll.png)
 #### Select Window
-![SelectWindow](./assets/SelectWindow.png)
+![Select Window](./assets/SelectWindow.png)
+### Mute Tab
+![Mute Tab](./assets/TabMute.png)
 ### Large Font
 ![Large Font](./assets/LargeFont.png)
