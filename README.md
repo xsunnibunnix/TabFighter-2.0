@@ -16,24 +16,33 @@ __Be sure to turn your sound on and enjoy!__
 </p>
 
 ## Features
-- Click to go to or close any tab on any window.
-- View tabs on your current window at the top of the list.
-- Select a window from the dropdown to see only tabs on that window.
-- If you're feeling spicy, close a tab at random with Random Mode.
-- Accessibility feature: enlarge font size for better viewing.
+### View Tabs and Navigate to Tab
+- Click to go any tab on any window
+- View tabs on your current window at the top of the list
+- Select a window from the dropdown to see only tabs on that window
+### Re-order Tabs
+- Drag and drop tabs to re-order your tabs in their current window or move tabs to a new window
+### Close Tabs or Windows
+- Select individual or select all tabs to close
+- Click on the window name to select all the tabs in that window
+- If you're feeling spicy, close a tab at random by hitting the Chance button
+### Muting
+- Easily view and mute / unmute any audible tabs
+### Accessibility + more
+- Accessibility feature: enlarge font size for better viewing
 - Light and Dark mode
-- Newly added: mute button
+- Nostalgic sound effects
 
 ## Examples
-### Dark Mode
-![Dark Mode](./assets/DarkModeMedium.png)
-### Light Mode
-![Light Mode](./assets/LightModeMedium.png)
-### View By Window
-![Dropdown](./assets/DropDownMedium.png)
+### Themes
+#### Dark Mode
+![Dark Mode](./assets/DarkMode.png)
+#### Light Mode
+![Light Mode](./assets/LightMode.png)
+### Select
+#### Select All
+![SelectAll](./assets/SelectAll.png)
+#### Select Window
+![SelectWindow](./assets/SelectWindow.png)
 ### Large Font
-![Large Font](./assets/LargeFontMedium.png)
-
-## Coming Soon
-- Tab mutability
-- More themes!
+![Large Font](./assets/LargeFont.png)

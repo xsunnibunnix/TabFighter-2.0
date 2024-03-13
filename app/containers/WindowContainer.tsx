@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Tabs from '../components/Tabs/Tabs';
 import { Yahoo } from '../components/Sounds/Yahoo';
@@ -14,9 +14,23 @@ type WindowProps = {
 
 const WindowContainer = ({ id, tabs, windowName }: WindowProps) => {
   const { soundOn } = useSoundContext();
-  const { addToSelectedTabs, removeFromSelectedTabs, selectedTabs } = useSelectContext();
+  const { addToSelectedTabs, removeFromSelectedTabs, selectAll, setSelectAll, selectedTabs } = useSelectContext();
   const [clicked, setClicked] = useState<boolean>(false);
   const [yahoo, setYahoo] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (selectAll) setClicked(true);
+    if (!selectAll) {
+      for (let tab of tabs) {
+        const isTabSelected = selectedTabs.find(selectedTab => selectedTab === tab.tabId);
+        if (!isTabSelected) {
+          setClicked(false);
+          return;
+        }
+      };
+      setClicked(true);
+    }
+  }, [selectAll, selectedTabs]);
 
   const handleClick = () => {
     if (!clicked) {
@@ -28,6 +42,7 @@ const WindowContainer = ({ id, tabs, windowName }: WindowProps) => {
         if (tabId) addToSelectedTabs(tabId)
       });
     } else {
+      if (selectAll) setSelectAll(false);
       tabs.forEach(({ tabId }) => {
         if (tabId) removeFromSelectedTabs(tabId);
       })

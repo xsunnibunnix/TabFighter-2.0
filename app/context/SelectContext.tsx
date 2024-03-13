@@ -18,6 +18,8 @@ export default function SelectProvider({ children }: { children: React.ReactNode
 
     const addToSelectedTabs = (input: number) => {
         if (!input) return;
+        const isTabSelected = selectedTabs.find(tab => tab === input);
+        if (isTabSelected) return;
         setSelectedTabs(prev => [...prev, input]);
     };
 

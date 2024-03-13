@@ -7,6 +7,7 @@ type SelectButtonProps = {
   checked: boolean;
 }
 
+// TODO Add a sound when checked / unchecked
 const SelectButton = ({ checkTab, tabId, checked }: SelectButtonProps) => {
   const { smallActive } = useFontContext();
   return (

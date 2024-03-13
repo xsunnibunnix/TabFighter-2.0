@@ -18,7 +18,6 @@ const ToolbarLeft = () => {
   const { soundOn } = useSoundContext();
   const { selectAll, setSelectAll, selectedTabs, addToSelectedTabs, removeFromSelectedTabs } = useSelectContext();
 
-
   // Reduce all tabs to one array used in selectHandler and randomClick functions
   const tabsList = Object.values(allTabs).reduce((acc, curr): Tab[] => {
     acc.push(...curr);
