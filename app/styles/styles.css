@@ -129,6 +129,14 @@ h3 {
   -ms-animation: fadeOut ease .4s;
 }
 
+.toolbarActive {
+  animation: fadeIn ease .4s;
+  -webkit-animation: fadeIn ease .4s;
+  -moz-animation: fadeIn ease .4s;
+  -o-animation: fadeIn ease .4s;
+  -ms-animation: fadeIn ease .4s;
+}
+
 .window-btn { 
   position: relative; 
   margin-top: -4px;
