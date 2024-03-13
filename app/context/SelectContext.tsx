@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 import { TabsArray } from '../../types';
 
-interface SelectContextProps {
+type SelectContextProps = {
     selectAll: boolean;
     setSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
     selectedTabs: TabsArray;

@@ -6,7 +6,7 @@ import { useSoundContext } from '../context/SoundContext';
 import { useSelectContext } from '../context/SelectContext';
 import { Tab } from '../../types';
 
-interface WindowProps {
+type WindowProps = {
   id: string,
   tabs: Tab[],
   windowName: string

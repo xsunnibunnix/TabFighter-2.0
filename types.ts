@@ -2,34 +2,34 @@ type MutedInfo = chrome.tabs.MutedInfo;
 
 export type TabsArray = Array<number>;
 
-export interface TabAudio {
+export type TabAudio = {
   audible: boolean | undefined,
   mutedInfo: MutedInfo | undefined,
   tabId: number | undefined,
 }
 
-export interface Tab extends TabAudio {
+export type Tab = {
   active: boolean,
   title: string | undefined,
   windowId: number,
   height: number | undefined,
   width: number | undefined,
   index: number
-}
+} & TabAudio
 
-export interface AllTabs {
+export type AllTabs =  {
   [key: number | string]: Tab[]
 }
 
-export interface Window {
+export type Window =  {
   width: number | undefined,
   height: number | undefined,
 }
 
-export interface AllWindows {
+export type AllWindows = {
   [key: number | string]: Window
 }
 
-export interface WindowNames {
+export type WindowNames = {
   [key: string]: string
 }

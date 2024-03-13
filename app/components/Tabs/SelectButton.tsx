@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFontContext } from '../../context/FontContext';
 
-interface SelectButtonProps {
+type SelectButtonProps = {
   checkTab: (e: React.ChangeEvent<HTMLInputElement>) => void;
   tabId: string; 
   checked: boolean;
