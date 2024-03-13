@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface YoshiProps {
+type YoshiProps = {
   play: boolean
 }
 

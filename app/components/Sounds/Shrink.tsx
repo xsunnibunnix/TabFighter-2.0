@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ShrinkProps {
+type ShrinkProps = {
   play: boolean
 }
 

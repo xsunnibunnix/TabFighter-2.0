@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface GrowProps {
+type GrowProps = {
   play: boolean
 }
 

@@ -1,17 +1,27 @@
+type MutedInfo = chrome.tabs.MutedInfo;
+
+export type TabsArray = Array<number>;
+
+export type TabAudio = {
+  audible: boolean | undefined,
+  mutedInfo: MutedInfo | undefined,
+  tabId: number | undefined,
+}
+
 export type Tab = {
   active: boolean,
-  tabId: number | undefined,
   title: string | undefined,
   windowId: number,
   height: number | undefined,
-  width: number | undefined
-}
+  width: number | undefined,
+  index: number
+} & TabAudio
 
-export type AllTabs = {
+export type AllTabs =  {
   [key: number | string]: Tab[]
 }
 
-export type Window = {
+export type Window =  {
   width: number | undefined,
   height: number | undefined,
 }

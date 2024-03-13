@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface HadoukenProps {
+type HadoukenProps = {
   play: boolean
 }
 

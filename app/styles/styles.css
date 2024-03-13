@@ -13,10 +13,8 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  max-width: 425px;
-  width: 425px;
   max-height: 400px;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 14px;
   color: hsl(var(--n))
 }
@@ -26,18 +24,34 @@ button {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
+
+  &:hover{
+    cursor: pointer;
+  }
 }
 
-button:hover{
-  cursor: pointer;
+.sm-window {
+  max-width: 425px;
+  width: 425px;
+}
+
+.lg-window {
+  max-width: 550px;
+  width: 550px;
 }
 
 /* Header */
 h3 {
-  width: 350px;
+  width: calc(100% - 75px);
+  max-width: 400px;
   font-family: 'Press Start 2P', cursive;
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
   text-shadow: 1px 1px 2px hsl(var(--p)), 0 0 .6em hsl(var(--pc));
+}
+
+.options {
+  width: calc(100% - 50px);
+  max-width: 475px;
 }
 
 .font-btn {
@@ -45,25 +59,6 @@ h3 {
   border-radius: 8px;
   background: transparent;
   color: hsl(var(--p));
-}
-
-.options {
-  width: 375px;
-  max-width: 375px;
-}
-
-#random {
-  height: 32px;
-  padding: 1rem;
-  border: 2px solid hsl(var(--p));
-  border-radius: 8px;
-  background: transparent;
-  color: hsl(var(--p));
-}
-
-#random:hover, .font-btn:hover {
-  background: hsl(var(--p));
-  color: white;
 }
 
 .sm-font {
@@ -76,74 +71,54 @@ h3 {
 
 /* Tabs List */
 .myTabs {
-  width: 375px;
-  max-width: 375px;
+  width: calc(100% - 50px);
+  max-width: calc(100% - 50px);
 }
 
-.window {
+.window, .tab-li {
   border-bottom: .3px solid rgba(98, 98, 98, 0.6);
 }
 
-.window:last-child {
+.window:last-child, .tab-li:last-child {
   border: none;
 }
 
-.tab-li {
-  border-bottom: .3px solid rgba(98, 98, 98, 0.6);
-}
+.tab-li li {
+  overflow-wrap: anywhere;
+  margin-left: 2px;
 
-.tab-li:last-child {
-  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: hsl(var(--s));
+    border-radius: 8px;
+  }
 }
-
-.tab-li li:hover {
-  cursor: pointer;
-  background-color: hsl(var(--s));
-  border-radius: 8px;
-}
-
-.tab-li:hover span {
-  width: 40px;
-  opacity: 1;
-}
-
 
 .delete-btn {
   border-radius: 3px;
 }
 
-.is-selected span { 
-  width: 40px; 
-  opacity: 1;
-}
-
 .select-btn { 
   position: relative; 
   margin-left: 3px;
-  margin-right: 1px;
+  margin-right: 2px;
 }
 
-span.delete-btn { 
-  background: #e74e3c;
-}
-
-span {
-  color: white;
-  width: 0;
-  transition: 0.2s linear;
-  opacity: 0;
-}
-
-span:hover {
-  cursor: pointer;
+.checkbox:hover {
+  box-shadow:  0 0 5px 10px hsl(var(--s));
+  background-color: hsl(var(--s));
 }
 
 .active {
   background-color: hsl(var(--pf));
   border: .5px solid hsl(var(--pf));
-  box-shadow: 0px 0px 5px 3px hsl(var(--pf));
+  box-shadow: 0px 0px 4px 3px hsl(var(--pf));
   border-radius: 8px;
   color: hsl(var(--n));
+
+  li {
+    margin-left: 10px !important;
+  }
 }
 
 .delete {
@@ -152,6 +127,14 @@ span:hover {
   -moz-animation: fadeOut ease .4s;
   -o-animation: fadeOut ease .4s;
   -ms-animation: fadeOut ease .4s;
+}
+
+.toolbarActive {
+  animation: fadeIn ease .4s;
+  -webkit-animation: fadeIn ease .4s;
+  -moz-animation: fadeIn ease .4s;
+  -o-animation: fadeIn ease .4s;
+  -ms-animation: fadeIn ease .4s;
 }
 
 .window-btn { 

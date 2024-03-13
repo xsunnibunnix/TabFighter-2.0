@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
-interface ThemeContextProps {
+type ThemeContextProps = {
   darkMode: boolean,
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
   theme: string,
@@ -22,10 +22,14 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     setTheme(localTheme!);
     document.querySelector('html')?.setAttribute('data-theme', localTheme!);
   }, [theme]);
-  
-  mediaQuery.addEventListener('change', (e) => {
-    setDarkMode(e.matches);
-  })
-  
-  return <ThemeContext.Provider value={{ darkMode, setDarkMode, theme, setTheme }}>{children}</ThemeContext.Provider>
+
+  return <ThemeContext.Provider value={ { darkMode, setDarkMode, theme, setTheme } }>{ children }</ThemeContext.Provider>
 };
+
+export const useThemeContext = () => {
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) {
+    throw new Error('ThemeContext must be used within the ThemeContext Provider')
+  }
+  return themeContext;
+}

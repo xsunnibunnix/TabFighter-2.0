@@ -1,9 +1,8 @@
 import React from 'react';
 import Header from './components/Header/Header';
-import TabsContainer from './containers/TabsContainer';
+import TabsContainer from './containers/AllTabsContainer';
 import TabProvider from './context/TabContext';
 import FontProvider from './context/FontContext';
-import RemoveProvider from './context/RemoveContext';
 import ThemeProvider from './context/ThemeContext';
 import SoundProvider from './context/SoundContext';
 import SelectProvider from './context/SelectContext';
@@ -14,14 +13,12 @@ const App = () => {
       <ThemeProvider>
         <SoundProvider>
           <TabProvider>
-            <RemoveProvider>
-              <SelectProvider>
-                <FontProvider>
-                  <Header />
-                  <TabsContainer />
-                </FontProvider>
-              </SelectProvider>
-            </RemoveProvider>
+            <SelectProvider>
+              <FontProvider>
+                <Header />
+                <TabsContainer />
+              </FontProvider>
+            </SelectProvider>
           </TabProvider>
         </SoundProvider>
       </ThemeProvider>

@@ -1,14 +1,15 @@
-import React, { useContext, useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
+import { DragDropContext, DragUpdate } from "react-beautiful-dnd";
 import WindowContainer from "./WindowContainer";
-import { TabContext } from "../context/TabContext";
-import { FontContext } from "../context/FontContext";
+import { useTabContext } from "../context/TabContext";
+import { useFontContext } from "../context/FontContext";
 import { WindowNames } from "../../types";
 
-const TabsContainer = () => {
+const AllTabsContainer = () => {
   const [currentWindow, setCurrentWindow] = useState<chrome.windows.Window | null>(null);
-  const [selected, setSelected] = useState<number | null>(null)
-  const allTabs = useContext(TabContext)?.allTabs;
-  const smallActive = useContext(FontContext)?.smallActive;
+  const [selected, setSelected] = useState<number | null>(null);
+  const { allTabs, updateTabs } = useTabContext();
+  const { smallActive } = useFontContext();
 
   useEffect(() => {
     chrome.windows.getCurrent().then(window => setCurrentWindow(window));
@@ -30,7 +31,7 @@ const TabsContainer = () => {
     }
   });
 
-  const windows = [];
+  const windows:React.JSX.Element[] = [];
   for (const window in allTabs) {
     if (!selected) {
       if (Number(window) === currentWindow?.id) {
@@ -51,15 +52,27 @@ const TabsContainer = () => {
     setSelected(() => windowId !== '' ? Number(windowId) : null);
   }
 
+  const onDragEnd = async (e: DragUpdate) => {
+    const { destination, draggableId, source } = e;
+    if (!destination) return;
+    if (destination.droppableId === source.droppableId && destination.index === source.index) return;
+    const index = Number(destination?.index);
+    const windowId = Number(destination?.droppableId);
+    await chrome.tabs.move(Number(draggableId), { index, windowId });
+    if (updateTabs) updateTabs();
+  }
+
   return (
-    <div className={`myTabs flex flex-col items-center justify-center m-auto py-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
+    <div className={`myTabs flex flex-col items-center justify-center m-auto pt-1 pb-2 box-border ${smallActive ? 'sm-font' : 'lg-font'}`}>
       <select className="select select-bordered w-full max-w-xs mb-2" onChange={e => handleChange(e)} >
         <option selected>All Windows</option>
         {windowList}
       </select>
-      {windows}
+      <DragDropContext onDragEnd={e => onDragEnd(e)}>
+        {windows}
+      </DragDropContext>
     </div>
   )
 }
 
-export default TabsContainer;
+export default AllTabsContainer;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface CoinProps {
+type CoinProps = {
   play: boolean
 }
 
