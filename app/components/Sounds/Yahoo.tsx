@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface YahooProps {
+type YahooProps = {
   play: boolean
 }
 

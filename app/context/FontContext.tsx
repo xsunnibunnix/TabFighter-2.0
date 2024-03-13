@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-interface FontContextProps {
+type FontContextProps = {
   smallActive: boolean,
   setSmallActive: React.Dispatch<React.SetStateAction<boolean>>
 }

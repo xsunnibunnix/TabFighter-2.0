@@ -24,10 +24,10 @@ button {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-}
 
-button:hover{
-  cursor: pointer;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .sm-window {
@@ -61,20 +61,6 @@ h3 {
   color: hsl(var(--p));
 }
 
-#random {
-  height: 32px;
-  padding: 1rem;
-  border: 2px solid hsl(var(--p));
-  border-radius: 8px;
-  background: transparent;
-  color: hsl(var(--p));
-}
-
-#random:hover, .font-btn:hover {
-  background: hsl(var(--p));
-  color: white;
-}
-
 .sm-font {
   font-size: 12px;
 }
@@ -100,12 +86,12 @@ h3 {
 .tab-li li {
   overflow-wrap: anywhere;
   margin-left: 2px;
-}
 
-.tab-li li:hover {
-  cursor: pointer;
-  background-color: hsl(var(--s));
-  border-radius: 8px;
+  &:hover {
+    cursor: pointer;
+    background-color: hsl(var(--s));
+    border-radius: 8px;
+  }
 }
 
 .delete-btn {
@@ -129,10 +115,10 @@ h3 {
   box-shadow: 0px 0px 4px 3px hsl(var(--pf));
   border-radius: 8px;
   color: hsl(var(--n));
-}
 
-.active li {
-  margin-left: 10px !important;
+  li {
+    margin-left: 10px !important;
+  }
 }
 
 .delete {
@@ -141,6 +127,14 @@ h3 {
   -moz-animation: fadeOut ease .4s;
   -o-animation: fadeOut ease .4s;
   -ms-animation: fadeOut ease .4s;
+}
+
+.toolbarActive {
+  animation: fadeIn ease .4s;
+  -webkit-animation: fadeIn ease .4s;
+  -moz-animation: fadeIn ease .4s;
+  -o-animation: fadeIn ease .4s;
+  -ms-animation: fadeIn ease .4s;
 }
 
 .window-btn { 

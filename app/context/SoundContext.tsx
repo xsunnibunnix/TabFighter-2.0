@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-interface SoundContextProps {
+type SoundContextProps = {
   soundOn: boolean,
   setSoundOn: React.Dispatch<React.SetStateAction<boolean>>
 }

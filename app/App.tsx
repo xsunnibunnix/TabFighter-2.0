@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header';
-import TabsContainer from './containers/TabsContainer';
+import TabsContainer from './containers/AllTabsContainer';
 import TabProvider from './context/TabContext';
 import FontProvider from './context/FontContext';
 import ThemeProvider from './context/ThemeContext';

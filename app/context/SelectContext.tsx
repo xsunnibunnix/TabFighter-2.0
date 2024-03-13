@@ -1,36 +1,43 @@
-import React, { createContext, useState } from 'react'; 
+import React, { createContext, useState, useContext } from 'react';
+import { TabsArray } from '../../types';
 
-type tab = number;
-type tabs = Set<tab>;
-
-interface SelectContextProps { 
-    selectedTabs: tabs;
-    addToSelectedTabs: (...inputs: Array<tab>) => void; 
-    removeFromSelectedTabs: (...inputs: Array<tab>) => void;
+type SelectContextProps = {
+    selectAll: boolean;
+    setSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedTabs: TabsArray;
+    setSelectedTabs: React.Dispatch<React.SetStateAction<TabsArray>>;
+    addToSelectedTabs: (input: number) => void;
+    removeFromSelectedTabs: (input?: number) => void;
 }
 
-export const SelectContext = createContext<SelectContextProps | null >(null); 
+export const SelectContext = createContext<SelectContextProps | null>(null);
 
-export default function SelectProvider({ children }: { children: React.ReactNode }) { 
-    const [selectedTabs, setSelectedTabs] = useState<tabs>(new Set());
-    const addToSelectedTabs = (...inputs: Array<tab>) => { 
-        if (!inputs.length) return;
-        const newTabs = new Set(selectedTabs);
-        inputs.forEach(input => newTabs.add(input));
-        setSelectedTabs(newTabs);
-    }
+export default function SelectProvider({ children }: { children: React.ReactNode }) {
+    const [selectAll, setSelectAll] = useState(false);
+    const [selectedTabs, setSelectedTabs] = useState<TabsArray>([]);
 
-    const removeFromSelectedTabs = (...inputs: Array<tab>) => { 
+    const addToSelectedTabs = (input: number) => {
+        if (!input) return;
+        setSelectedTabs(prev => [...prev, input]);
+    };
+
+    const removeFromSelectedTabs = (input?: number) => {
         // Remove all if no input given
-        if (!inputs.length) { 
-            setSelectedTabs(new Set()); 
-            return;
-        }
+        if (!input) setSelectedTabs([]);
         // Otherwise, filter out the selected tab
-        const newTabs = new Set(selectedTabs); 
-        inputs.forEach(input => newTabs.delete(input)); 
-        setSelectedTabs(newTabs);
+        setSelectedTabs(prev => {
+            return prev.filter(tab => tab !== input);
+        });
     }
 
-    return <SelectContext.Provider value={{ selectedTabs, addToSelectedTabs, removeFromSelectedTabs }}>{children}</SelectContext.Provider> 
+
+    return <SelectContext.Provider value={ { selectAll, setSelectAll, selectedTabs, setSelectedTabs, addToSelectedTabs, removeFromSelectedTabs } }>{ children }</SelectContext.Provider>
+};
+
+export const useSelectContext = () => {
+    const selectContext = useContext(SelectContext);
+    if (!selectContext) {
+        throw new Error('SelectContext cannot be used outside of the SelectContext Provider');
+    };
+    return selectContext;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface FatalityProps {
+type FatalityProps = {
   play: boolean
 }
 
