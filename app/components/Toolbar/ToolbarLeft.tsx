@@ -107,14 +107,14 @@ const ToolbarLeft = () => {
       {/* Random Button */ }
       <span className={ `tooltip tooltip-right flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'hidden opacity-0' : 'opacity-100'}` } data-tip='Close a tab at random'>
         <ToolbarButton clickFunc={ randomClick } smallActive={smallActive}>
-          <img className='flex justify-center items-center w-fit h-fit p-[.175rem]' src={ random } alt="Random mode button" />
+          <img className={ `flex justify-center items-center p-[.175rem] ${smallActive ? 'w-[34px] h-[34px]' : 'w-[42px] h-[42px'}` } src={ random } alt="Random mode button" />
         </ToolbarButton>
       </span>
 
       {/* Delete Button */ }
       <span className={ `flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'opacity-100' : 'hidden opacity-0'}` }>
         <ToolbarButton clickFunc={ removeTabs } smallActive={smallActive}>
-          <img className='flex justify-center items-center w-6 h-6' src={ trash } alt="Delete button" />
+          <img className={ `flex justify-center items-center ${smallActive ? 'w-6 h-6' : 'w-8 h-8'}` } src={ trash } alt="Delete button" />
         </ToolbarButton>
       </span>
 
