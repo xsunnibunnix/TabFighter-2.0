@@ -1,11 +1,11 @@
 import React, { createContext, useState, useContext } from 'react';
-import { SelectedTabs } from '../../types';
+import { TabsArray } from '../../types';
 
 interface SelectContextProps {
     selectAll: boolean;
     setSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedTabs: SelectedTabs;
-    setSelectedTabs: React.Dispatch<React.SetStateAction<SelectedTabs>>;
+    selectedTabs: TabsArray;
+    setSelectedTabs: React.Dispatch<React.SetStateAction<TabsArray>>;
     addToSelectedTabs: (input: number) => void;
     removeFromSelectedTabs: (input?: number) => void;
 }
@@ -14,7 +14,7 @@ export const SelectContext = createContext<SelectContextProps | null>(null);
 
 export default function SelectProvider({ children }: { children: React.ReactNode }) {
     const [selectAll, setSelectAll] = useState(false);
-    const [selectedTabs, setSelectedTabs] = useState<SelectedTabs>([]);
+    const [selectedTabs, setSelectedTabs] = useState<TabsArray>([]);
 
     const addToSelectedTabs = (input: number) => {
         if (!input) return;

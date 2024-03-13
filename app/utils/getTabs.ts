@@ -1,4 +1,4 @@
-import { AllTabs, AllWindows } from "../../types";
+import { AllTabs, AllWindows, TabsArray } from "../../types";
 
 const getTabs = async () => {
   const tabs = await chrome.tabs.query({});

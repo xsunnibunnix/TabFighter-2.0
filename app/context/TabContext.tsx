@@ -1,26 +1,27 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import getTabs from '../utils/getTabs';
-import { AllTabs } from '../../types';
+import { AllTabs, TabsArray, Tab } from '../../types';
 
-interface TabContextProps {
+type TabContextProps = {
   allTabs: AllTabs,
   setAllTabs: React.Dispatch<React.SetStateAction<AllTabs>>,
   updateTabs: () => void,
-  tabToDelete: number,
-  setTabToDelete: React.Dispatch<React.SetStateAction<number>>
+  tabsToDelete: TabsArray,
+  setTabsToDelete: React.Dispatch<React.SetStateAction<TabsArray>>
 }
 
 export const TabContext = createContext<TabContextProps | null>(null);
 
 export default function TabProvider({ children }: { children: React.ReactNode }) {
   const [allTabs, setAllTabs] = useState<AllTabs>({});
-  const [tabToDelete, setTabToDelete] = useState<number>(Infinity);
+  const [tabsToDelete, setTabsToDelete] = useState<TabsArray>([]);
   const updateTabs = () => {
     getTabs()
-      .then(tabs => setAllTabs(tabs));
+      .then((allTabs ) => setAllTabs(allTabs));
+    setTabsToDelete([]);
   };
   useEffect(() => updateTabs(), []);
-  return <TabContext.Provider value={{ allTabs, setAllTabs, updateTabs, tabToDelete, setTabToDelete }}>{children}</TabContext.Provider>
+  return <TabContext.Provider value={{ allTabs, setAllTabs, updateTabs, tabsToDelete, setTabsToDelete }}>{children}</TabContext.Provider>
 };
 
 export const useTabContext = () => {

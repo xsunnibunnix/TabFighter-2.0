@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { Fatality } from '../Sounds/Fatality';
+import { Hadouken } from '../Sounds/Hadouken';
+import ToolbarButton from './ToolbarButton';
 import { useTabContext } from '../../context/TabContext';
 import { useSoundContext } from '../../context/SoundContext';
-import { useThemeContext } from "../../context/ThemeContext";
 import { useSelectContext } from '../../context/SelectContext';
+import { useFontContext } from '../../context/FontContext';
 import { Tab } from '../../../types';
-import getTabs from '../../utils/getTabs';
 import random from '../../icons/random.svg';
 import trash from '../../icons/trash.svg';
 
 const ToolbarLeft = () => {
   const [fatality, setFatality] = useState(false);
-  const { setTabToDelete, allTabs, setAllTabs } = useTabContext();
+  const [hadouken, setHadouken] = useState<boolean>(false);
+  const { updateTabs, setTabsToDelete, allTabs } = useTabContext();
+  const { smallActive } = useFontContext();
   const { soundOn } = useSoundContext();
   const { selectAll, setSelectAll, selectedTabs, addToSelectedTabs, removeFromSelectedTabs } = useSelectContext();
 
@@ -24,9 +25,9 @@ const ToolbarLeft = () => {
     return acc;
   }, []);
 
+  // Checking if there are any selected tabs to set indeterminate property on the select-all checkbox
   useEffect(() => {
     const checkbox = document.getElementById('select-all') as HTMLInputElement;
-
     if (checkbox && !selectAll) {
       if (selectedTabs.length) {
         if (tabsList.length === selectedTabs.length) {
@@ -61,37 +62,65 @@ const ToolbarLeft = () => {
     const randTab = tabsList[randNum];
 
     if (randTab) {
+      const { active, tabId } = randTab;
       if (soundOn) setFatality(prev => !prev);
-      if (setTabToDelete) setTabToDelete(randTab.tabId!);
-      const { active } = randTab;
-      let timeToRemove: number;
-      if (active) timeToRemove = 1500;
-      else timeToRemove = 500;
+      setTabsToDelete([tabId!]);
+      const timeToRemove: number = active ? 1500 : 500;
 
-      setTimeout(chrome.tabs.remove, timeToRemove, randTab.tabId);
-      setTimeout(() => getTabs().then(tabs => {
-        if (setAllTabs) setAllTabs(tabs);
-      }), timeToRemove + 100);
+      setTimeout(chrome.tabs.remove, timeToRemove, tabId);
+      setTimeout(updateTabs, timeToRemove + 100);
       if (soundOn) setTimeout(() => setFatality(prev => !prev), 1500);
     }
   };
 
+  const removeTabs = () => {
+    let activeTab = false;
+    for (let tab of selectedTabs) {
+      const isTabActive = tabsList.find(tabInList => tabInList.tabId === tab)
+      if (isTabActive) {
+        activeTab = true;
+        break;
+      }
+    }
+
+    const timeout = soundOn ? (activeTab ? 900 : 400) : 250;
+    setTabsToDelete([...selectedTabs]);
+    setTimeout(
+      () => selectedTabs.forEach(tab => {
+        chrome.tabs.remove(tab);
+        removeFromSelectedTabs(tab);
+      }),
+      timeout
+    );
+
+    if (soundOn) {
+      setHadouken(true);
+      setTimeout(() => setHadouken(prev => !prev), 1500);
+    };
+
+    setTimeout(updateTabs, timeout + 50);
+  };
+
   return (
     <div className='flex items-center'>
-      <input type="checkbox" id="select-all" className='checkbox checkbox-primary mx-0.5' checked={ selectAll } onChange={ selectHandler } />
+      <input type="checkbox" id="select-all" className={ `checkbox checkbox-primary mx-0.5 ${smallActive ? '' : 'checkbox-lg'}` } checked={ selectAll } onChange={ selectHandler } />
 
-      <span className={`flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'hidden opacity-0': 'opacity-100'}`}>
-        <button className='tooltip tooltip-right btn btn-ghost btn-square btn-sm h-9 w-9 mx-1' id="random" data-tip='Close a tab at random' onClick={ randomClick }>
+      {/* Random Button */ }
+      <span className={ `tooltip tooltip-right flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'hidden opacity-0' : 'opacity-100'}` } data-tip='Close a tab at random'>
+        <ToolbarButton clickFunc={ randomClick } smallActive={smallActive}>
           <img className='flex justify-center items-center w-fit h-fit p-[.175rem]' src={ random } alt="Random mode button" />
-        </button>
+        </ToolbarButton>
       </span>
 
-      <span className={`flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'opacity-100' : 'hidden opacity-0'}`}>
-        <button className='btn btn-ghost btn-square btn-sm h-9 w-9 mx-1'>
-          <img className='fill-primary stroke-primary w-6 h-6' src={trash} alt="Delete button" />
-        </button>
+      {/* Delete Button */ }
+      <span className={ `flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'opacity-100' : 'hidden opacity-0'}` }>
+        <ToolbarButton clickFunc={ removeTabs } smallActive={smallActive}>
+          <img className='flex justify-center items-center w-6 h-6' src={ trash } alt="Delete button" />
+        </ToolbarButton>
       </span>
+
       { fatality && soundOn && <Fatality play={ fatality } /> }
+      { hadouken && soundOn && <Hadouken play={ hadouken } /> }
     </div>
   )
 }

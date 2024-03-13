@@ -1,6 +1,6 @@
 type MutedInfo = chrome.tabs.MutedInfo;
 
-export type SelectedTabs = Array<number>;
+export type TabsArray = Array<number>;
 
 export interface TabAudio {
   audible: boolean | undefined,

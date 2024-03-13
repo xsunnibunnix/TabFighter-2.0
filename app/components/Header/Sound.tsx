@@ -13,9 +13,7 @@ const Sound = () => {
   const volOn:string = darkMode ? darkVolOn : lightVolOn;
   const volOff: string = darkMode ? darkVolOff : lightVolOff;
 
-  const handleMute = () => {
-    if (setSoundOn) setSoundOn(prev => !prev);
-  }
+  const handleMute = () => setSoundOn(prev => !prev);
 
   return (
     <div className='flex items-center px-5 pt-5 pb-2'>

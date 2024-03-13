@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFontContext } from '../context/FontContext';
+import { useFontContext } from '../../context/FontContext';
 
 interface SelectButtonProps {
   checkTab: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -7,7 +7,7 @@ interface SelectButtonProps {
   checked: boolean;
 }
 
-export const SelectButton = ({ checkTab, tabId, checked }: SelectButtonProps) => {
+const SelectButton = ({ checkTab, tabId, checked }: SelectButtonProps) => {
   const { smallActive } = useFontContext();
   return (
     <span className='select-btn flex items-center justify-center h-10 m-auto' id={'selecting-'+tabId}>
@@ -15,3 +15,5 @@ export const SelectButton = ({ checkTab, tabId, checked }: SelectButtonProps) =>
     </span>
   );
 };
+
+export default SelectButton;
