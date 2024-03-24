@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Fatality } from '../Sounds/Fatality';
 import { Hadouken } from '../Sounds/Hadouken';
 import ToolbarButton from './ToolbarButton';
@@ -17,6 +17,9 @@ const ToolbarLeft = () => {
   const { smallActive } = useFontContext();
   const { soundOn } = useSoundContext();
   const { selectAll, setSelectAll, selectedTabs, addToSelectedTabs, removeFromSelectedTabs } = useSelectContext();
+  
+  const checkboxRef = useRef<HTMLInputElement>(null);
+  const resolvedRef = checkboxRef.current as HTMLInputElement;
 
   // Reduce all tabs to one array used in selectHandler and randomClick functions
   const tabsList = Object.values(allTabs).reduce((acc, curr): Tab[] => {
@@ -26,15 +29,14 @@ const ToolbarLeft = () => {
 
   // Checking if there are any selected tabs to set indeterminate property on the select-all checkbox
   useEffect(() => {
-    const checkbox = document.getElementById('select-all') as HTMLInputElement;
-    if (checkbox && !selectAll) {
+    if (resolvedRef && !selectAll) {
       if (selectedTabs.length) {
         if (tabsList.length === selectedTabs.length) {
           setSelectAll(true);
-          checkbox.indeterminate = false;
-        } else checkbox.indeterminate = true;
+          resolvedRef.indeterminate = false;
+        } else resolvedRef.indeterminate = true;
       }
-      else checkbox.indeterminate = false;
+      else resolvedRef.indeterminate = false;
     }
   }, [selectedTabs, selectAll]);
 
@@ -102,7 +104,7 @@ const ToolbarLeft = () => {
 
   return (
     <div className='flex items-center'>
-      <input type="checkbox" id="select-all" className={ `checkbox checkbox-primary mx-0.5 ${smallActive ? '' : 'checkbox-lg'}` } checked={ selectAll } onChange={ selectHandler } />
+      <input type="checkbox" id="select-all" ref={checkboxRef} className={ `checkbox checkbox-primary mx-0.5 ${smallActive ? '' : 'checkbox-lg'}` } checked={ selectAll } onChange={ selectHandler } />
 
       {/* Random Button */ }
       <span className={ `tooltip tooltip-right flex items-center transition-opacity duration-300 ${selectedTabs.length ? 'hidden opacity-0' : 'opacity-100'}` } data-tip='Close a tab at random'>
