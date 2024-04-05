@@ -1,11 +1,9 @@
 import React from 'react';
 
-type HadoukenProps = {
-  play: boolean
-}
-
-export const Hadouken = ({ play }: HadoukenProps) => {
+const Hadouken = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/Hadouken.mp3" />
+    <audio autoPlay src="../../soundFiles/Hadouken.mp3" />
   )
 };
+
+export default Hadouken;

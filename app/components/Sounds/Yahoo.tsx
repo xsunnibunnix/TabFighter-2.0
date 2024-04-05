@@ -1,11 +1,9 @@
 import React from 'react';
 
-type YahooProps = {
-  play: boolean
-}
-
-export const Yahoo = ({ play }: YahooProps) => {
+const Yahoo = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/yahoo.mp3" />
+    <audio autoPlay src="../../soundFiles/yahoo.mp3" />
   )
 };
+
+export default Yahoo;

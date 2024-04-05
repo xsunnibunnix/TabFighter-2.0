@@ -1,11 +1,9 @@
 import React from 'react';
 
-type ShrinkProps = {
-  play: boolean
-}
-
-export const Shrink = ({ play }: ShrinkProps) => {
+const Shrink = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/shrink.mp3" />
+    <audio autoPlay src="../../soundFiles/shrink.mp3" />
   )
 };
+
+export default Shrink;

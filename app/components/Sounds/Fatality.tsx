@@ -1,11 +1,9 @@
 import React from 'react';
 
-type FatalityProps = {
-  play: boolean
-}
-
-export const Fatality = ({ play }: FatalityProps) => {
+const Fatality = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/FinishHim.mp3" />
+    <audio autoPlay src="../../soundFiles/FinishHim.mp3" />
   )
 };
+
+export default Fatality;

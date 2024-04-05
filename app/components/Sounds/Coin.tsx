@@ -1,11 +1,9 @@
 import React from 'react';
 
-type CoinProps = {
-  play: boolean
-}
-
-export const Coin = ({ play }: CoinProps) => {
+const Coin = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/coin.mp3" />
+    <audio autoPlay src="../../soundFiles/coin.mp3" />
   )
 };
+
+export default Coin
