@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Fatality } from '../Sounds/Fatality';
-import { Hadouken } from '../Sounds/Hadouken';
+import Fatality from '../Sounds/Fatality';
+import Hadouken from '../Sounds/Hadouken';
+import { Minimize } from '../Sounds/Minimize';
 import ToolbarButton from './ToolbarButton';
 import { useTabContext } from '../../context/TabContext';
 import { useSoundContext } from '../../context/SoundContext';
@@ -13,7 +14,8 @@ import trash from '../../icons/trash.svg';
 
 const ToolbarLeft = () => {
   const [fatality, setFatality] = useState(false);
-  const [hadouken, setHadouken] = useState<boolean>(false);
+  const [hadouken, setHadouken] = useState(false);
+  const [minimize, setMinimize] = useState(false);
   const { updateTabs, setTabsToDelete, allTabs } = useTabContext();
   const { smallActive } = useFontContext();
   const { soundOn } = useSoundContext();
@@ -65,13 +67,16 @@ const ToolbarLeft = () => {
 
     if (randTab) {
       const { active, tabId } = randTab;
-      if (soundOn) setFatality(prev => !prev);
+      if (soundOn) {
+        setFatality(true);
+        setTimeout(() => setFatality(prev => !prev), 1500);
+      }
       setTabsToDelete([tabId!]);
+
       const timeToRemove: number = active ? 1500 : 500;
 
       setTimeout(chrome.tabs.remove, timeToRemove, tabId);
       setTimeout(updateTabs, timeToRemove + 100);
-      if (soundOn) setTimeout(() => setFatality(prev => !prev), 1500);
     }
   };
 
@@ -98,7 +103,7 @@ const ToolbarLeft = () => {
 
     if (soundOn) {
       setHadouken(true);
-      setTimeout(() => setHadouken(prev => !prev), 1500);
+      setTimeout(() => setHadouken(false), 1500);
     };
 
     setTimeout(updateTabs, timeout + 50);
@@ -106,8 +111,18 @@ const ToolbarLeft = () => {
 
   // Minimize windows
   const minimizeWindows = () => {
-    for (const window in allTabs) {
-      chrome.windows.update(Number(window), { state: 'minimized' });
+    if (soundOn) {
+      setMinimize(true);
+      setTimeout(() => setMinimize(false), 500);
+      setTimeout(() => {
+        for (const window in allTabs) {
+          chrome.windows.update(Number(window), { state: 'minimized' });
+        };
+      }, 250);
+    } else {
+      for (const window in allTabs) {
+        chrome.windows.update(Number(window), { state: 'minimized' });
+      };
     };
   };
 
@@ -136,8 +151,9 @@ const ToolbarLeft = () => {
         </ToolbarButton>
       </span>
 
-      { fatality && soundOn && <Fatality play={ fatality } /> }
-      { hadouken && soundOn && <Hadouken play={ hadouken } /> }
+      { fatality && soundOn && <Fatality /> }
+      { hadouken && soundOn && <Hadouken /> }
+      { minimize && soundOn && <Minimize /> }
     </div>
   )
 }

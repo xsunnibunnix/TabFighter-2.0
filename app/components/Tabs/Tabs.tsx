@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Tab } from '../../../types';
 import { Draggable } from 'react-beautiful-dnd';
-import { Yoshi } from '../Sounds/Yoshi';
+import Yoshi from '../Sounds/Yoshi';
+import YoshiMlem from '../Sounds/YoshiMlem';
+import EggPop from '../Sounds/EggPop';
 import { useTabContext } from '../../context/TabContext';
 import { useSoundContext } from '../../context/SoundContext';
 import { useSelectContext } from '../../context/SelectContext';
@@ -14,7 +16,9 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, 
   const { tabsToDelete } = useTabContext();
   const { soundOn } = useSoundContext();
   const { smallActive } = useFontContext();
-  const [yoshi, setYoshi] = useState<boolean>(false);
+  const [yoshi, setYoshi] = useState(false);
+  const [mlem, setMlem] = useState(false);
+  const [eggPop, setEggPop] = useState(false);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, 
       setTimeout(() => setYoshi(false), 2000);
     }
 
-    let timeoutTime = soundOn ? 800 : 300;
+    let timeoutTime = soundOn ? 800 : 100;
     if (!active) {
       setTimeout(chrome.tabs.update, timeoutTime, tabId, { active: true });
     }
@@ -40,10 +44,20 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, 
     if (tabId) {
       const tabSelected = selectedTabs.find(tab => tab === tabId!);
       if (tabSelected) {
+        if (soundOn) {
+          setEggPop(true);
+          setTimeout(() => setEggPop(false), 500);
+        };
         removeFromSelectedTabs(tabId);
         if (selectAll) setSelectAll(false);
-      } else addToSelectedTabs(tabId);
-    }
+      } else {
+        if (soundOn) {
+          setMlem(true);
+          setTimeout(() => setMlem(false), 250);
+        }
+        addToSelectedTabs(tabId);
+      };
+    };
   };
 
 
@@ -65,7 +79,9 @@ const Tabs = ({ tabId, active, title, height, width, index, audible, mutedInfo, 
           >
             { title }
           </li>
-          { yoshi && soundOn && <Yoshi play={ yoshi } /> }
+          { yoshi && soundOn && <Yoshi /> }
+          { mlem && soundOn && <YoshiMlem /> }
+          { eggPop && soundOn && <EggPop /> }
         </div>
       ) }
     </Draggable>
