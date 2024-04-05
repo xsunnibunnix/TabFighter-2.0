@@ -1,11 +1,9 @@
 import React from 'react';
 
-type GrowProps = {
-  play: boolean
-}
-
-export const Grow = ({ play }: GrowProps) => {
+const Grow = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/grow.mp3" />
+    <audio autoPlay src="../../soundFiles/grow.mp3" />
   )
 };
+
+export default Grow;

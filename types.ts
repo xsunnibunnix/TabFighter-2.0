@@ -17,11 +17,11 @@ export type Tab = {
   index: number
 } & TabAudio
 
-export type AllTabs =  {
+export type AllTabs = {
   [key: number | string]: Tab[]
 }
 
-export type Window =  {
+export type Window = {
   width: number | undefined,
   height: number | undefined,
 }

@@ -26,6 +26,8 @@ __Be sure to turn your sound on and enjoy!__
 - Select individual or select all tabs to close
 - Click on the window name to select all the tabs in that window
 - If you're feeling spicy, close a tab at random by hitting the Chance button
+### Minimize Windows
+ - Minimize all windows quickly with the click of a button
 ### Muting
 - Easily view and mute / unmute any audible tabs
 ### Accessibility + more
@@ -45,6 +47,6 @@ __Be sure to turn your sound on and enjoy!__
 #### Select Window
 ![Select Window](./assets/SelectWindow.png)
 ### Mute Tab
-![Mute Tab](./assets/TabMute.png)
+![Mute Tab](./assets/MuteTab.png)
 ### Large Font
 ![Large Font](./assets/LargeFont.png)

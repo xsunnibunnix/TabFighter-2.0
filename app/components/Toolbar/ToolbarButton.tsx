@@ -8,7 +8,7 @@ type ToolbarButtonProps = {
 
 const ToolbarButton = ({clickFunc, smallActive, children}:ToolbarButtonProps) => {
   return (
-    <button className={ `btn btn-ghost btn-square ${smallActive ? 'btn-sm h-9 w-9 mx-1' : 'btn-md w-11 h-11 mx-2' }` } onClick={ clickFunc }>
+    <button className={ `btn btn-ghost btn-square ${smallActive ? 'btn-sm h-9 w-9 ml-1' : 'btn-md w-11 h-11 ml-2' }` } onClick={ clickFunc }>
       {children}
     </button>
   )

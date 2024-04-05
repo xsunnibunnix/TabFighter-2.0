@@ -4,7 +4,7 @@ import Toolbar from '../Toolbar/Toolbar';
 
 const Header = () => {
    return (
-     <header id='header' className='flex flex-col items-center sticky top-0 bg-base-100/95 z-10 pb-1'>
+     <header id='header' className='flex flex-col items-center sticky top-0 bg-base-100/95 z-10 pb-1 backdrop-blur'>
       <MuteAndTheme />
       <h3 className='text-center font-bold text-3xl m-auto p-4 tracking-wide' >TabFighter</h3>
       <Toolbar />

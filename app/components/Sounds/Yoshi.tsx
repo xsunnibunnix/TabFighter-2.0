@@ -1,11 +1,9 @@
 import React from 'react';
 
-type YoshiProps = {
-  play: boolean
-}
-
-export const Yoshi = ({play}:YoshiProps) => {
+const Yoshi = () => {
   return (
-    <audio autoPlay={play} src="../../soundFiles/yoshi.mp3"/>
+    <audio autoPlay src="../../soundFiles/yoshi.mp3" />
   )
-}
+};
+
+export default Yoshi;
